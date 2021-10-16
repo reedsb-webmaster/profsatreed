@@ -1,1 +1,30 @@
 <p> Test That This Works! </p>
+
+<body>
+
+
+
+
+
+  <script type="module">
+  //NEED to keep this tag/section in so we can make firebase calls, also should stay at the bottom of body
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyBvWLtRYPBN0qKj_K30p1sY3vOS2hFAzQQ",
+    authDomain: "sin-reed-edu.firebaseapp.com",
+    databaseURL: "https://sin-reed-edu.firebaseio.com",
+    projectId: "sin-reed-edu",
+    storageBucket: "sin-reed-edu.appspot.com",
+    messagingSenderId: "922484667339",
+    appId: "1:922484667339:web:de17b706cc0f4340a47c4e"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  </script>
+</body>
