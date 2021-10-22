@@ -42,6 +42,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 25%;
   display: flex;
   justify-content: center;
+	text-align:center;
 }
 
 .navbar-left {
@@ -64,8 +65,9 @@ h1, h2, h3, h4, h5, h6 {
 	height: 100%;
 	background-color: #5e0501;
 	color: #f7f7f7;
-	padding: 5px, 0px;
+	margin-left:2.5px;
+	margin-right:2.5px;
 	border-color:#A70E16;
 	text-align: center;
-	font-size: 40%;
+	font-size: 100%;
 }
