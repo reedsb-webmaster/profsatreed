@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="main.css">
 </head>
 
-<?php //require_once("header.php"); ?>
+<?php require_once("header.php"); ?>
 
 <body>
   <div class="center-box">
