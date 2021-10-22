@@ -77,9 +77,10 @@ h1, h2, h3, h4, h5, h6 {
 	justify-content:center;
 }
 
-.tab a{
+.tab a h1{
 	color: #f7f7f7;
 	font-size:100%;
+	text-decoration:none;
 }
 
 .tab:hover {
