@@ -1,9 +1,16 @@
+<html>
 <head>
     <!-- linking css file with html file -->
     <link rel="stylesheet" href="main.css">
+    <script src="jquery.js"></script>
+    <script>
+    $(function(){
+      $("#includedContent").load("header.html");
+    });
+    </script>
 </head>
 
-<?php require_once("header.php"); ?>
+<div id="includedContent"></div>
 
 <body>
   <div class="center-box">
@@ -38,3 +45,4 @@
   const app = initializeApp(firebaseConfig);
   </script>
 </body>
+</html>
