@@ -64,5 +64,8 @@ h1, h2, h3, h4, h5, h6 {
 	height: 100%;
 	background-color: #5e0501;
 	color: #f7f7f7;
-	border-color:
+	padding: 5px, 0px;
+	border-color:#A70E16;
+	text-align: center;
+	font-size: 40%;
 }
