@@ -11,8 +11,6 @@
   <div class="center-box">
     <div class="center-box">
       <h1> This is where the results will go and be displayed, once we have them and implement that </h1>
-      <div>
-        <button onclick={this.updateSheetValues}> Trial Update Sheets </div>
     </div>
   </div>
 
@@ -20,39 +18,4 @@
 <div w3-include-html="/inc/footer.inc.html"></div>
 
 </body>
-<script>
-const Sheet_ID = '1lmlJA0cH4x51C1wshULfHPgRRX9vNtgy5NYuCLLsUV0';
-const AccessToken = 'ya29.a0ARrdaM9cHTbbyRCIspK7UtG_MXHHzVVXXeSxFwlNUbHDhkLKU3LeSuNHOFN1f7MHbAtZ8gQSeLsnKgwWeVspOJM9sSSSCagszW3ymz4BNJ5LyzFaQGuBpJZ5-RitI4oKqu3-v_sJQBkdveYShiC1oCEHrs-S';
-updateSheetValues = () => {
-  fetch('https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}:batchUpdate', {
-    method: "POST",
-     headers: {
-       "Content-Type": "application/json",
-       //update this token with yours.
-       Authorization: `Bearer ${ACCESS_TOKEN}`,
-     }
-     body: JSON.stringify({
-
-       requests: [{
-         repeatCell: {
-           range: {
-             startColumnIndex: 0,
-             endColumnIndex: 1,
-             startRowIndex: 0,
-             endRowIndex: 1,
-             sheetId: 0
-           },
-           cell: {
-             userEnteredValue: {
-               "numberValue": 10
-             },
-           },
-           fields: "*"
-         }
-       }
-     }
-   }
- }
-
-</script>
 </html>
