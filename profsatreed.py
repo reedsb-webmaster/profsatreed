@@ -2,8 +2,6 @@
 
 """
 Backend for profsatreed.com
-
-DON'T FORGET TO SANITIZE DATABASE AND FORM INPUTS
 """
 
 from http.server import BaseHTTPRequestHandler, HTTPServer
@@ -58,19 +56,6 @@ class Handler(BaseHTTPRequestHandler):
         except:
             self.send_error(500)
             traceback.print_exc()
-
-    def do_POST(self):
-        """
-        Handle POST requests.  The site's search should use GET
-        requests with query parameters, so we'll probably only need to
-        accept form submissions.
-        """
-        if self.path == "/submit":
-            self.send_response(200)
-            self.send_header("Content-type", "text/html")
-            self.end_headers()
-            self.wfile.write(bytes("TODO: Add new data", "utf8"))
-
 
 # Start Python's web server when this file is being ran directly
 if __name__ == "__main__":
