@@ -5,7 +5,10 @@ Backend for profsatreed.com
 """
 
 from http.server import CGIHTTPRequestHandler, HTTPServer
+from mako.template import Template
 import traceback
+
+t = Template(filename="template.html")
 
 class DataNotFound(Exception):
     """
@@ -17,8 +20,9 @@ def page_home(path: str) -> str:
     """
     Assemble the site's home page
     """
-    msg = "TODO: replace me with a template<br>"
-    return msg + "Path: " + path
+    return t.render(title = "Home | Profs at Reed",
+                    pageheader = "Home",
+                    body = "Welcome!")
 
 def responder(req, pagebuilder):
     """

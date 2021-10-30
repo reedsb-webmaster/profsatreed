@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>${title}</title>
+    <meta name='viewport' content='width=device-width, intial-scale=1'>
+    <link rel='stylesheet' href='/style.css' type='text/css' media='screen'>
+  </head>
+  <body>
+    <header>
+      <span id='title'><a href='/'>Profs at Reed</a></span>
+      <span id='page-title'>${pageheader}</span>
+      <hr>
+      <nav>
+        <a href='/advisor-feedback'>Advisor Feedback</a>
+        <a href='/professor-feedback'>Professor Feedback</a>
+        <a href='/feedback'>View Feedback</a>
+      </nav>
+      <form id='search' action='/search' method='GET'>
+        <input type='text'>
+        <button>Search</button>
+      </form>
+    </header>
+    <hr>
+    <article>
+      ${body}
+    </article>
+    <hr>
+    <footer>
+      <small>
+        <a href='https://github.com/reedsb-webmaster/profsatreed'>source</a>
+      </small>
+    </footer>
+  </body>
+</html>
+
