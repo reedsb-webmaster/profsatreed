@@ -4,7 +4,7 @@
 Backend for profsatreed.com
 """
 
-from http.server import BaseHTTPRequestHandler, HTTPServer
+from http.server import CGIHTTPRequestHandler, HTTPServer
 import traceback
 
 class DataNotFound(Exception):
@@ -35,7 +35,7 @@ def responder(req, pagebuilder):
     req.end_headers()
     req.wfile.write(bytes(html, "utf8"))
 
-class Handler(BaseHTTPRequestHandler):
+class Handler(CGIHTTPRequestHandler):
     """
     In order to make prototyping easier we'll use Python's built-in HTTP
     server module.  We should probably stick this behind a reverse-proxy
@@ -50,7 +50,18 @@ class Handler(BaseHTTPRequestHandler):
             if self.path == "/":
                 responder(self, page_home)
             else:
-                self.send_error(404)
+                try:
+                    lpath = self.translate_path(self.path)
+                    self.send_response(200)
+                    self.send_header("Content-type", self.guess_type(lpath))
+                    self.end_headers()
+                    with open(lpath, "rb") as file:
+                        self.wfile.write(file.read())
+                except FileNotFoundError:
+                    self.send_error(404)
+                except:
+                    self.send_error(500)
+                    traceback.print_exc()
         except DataNotFound:
             self.send_error(404)
         except:
