@@ -1,0 +1,70 @@
+
+/* Generic styling */
+
+body {
+    margin: 2em auto;
+    max-width: 40rem;
+    color: #454545;
+    font-family: arial;
+}
+
+a {
+    color: #880404;
+}
+
+/* Style the header */
+
+header a {
+    text-decoration: none;
+}
+
+header #title {
+    font-size: 1.8em;
+}
+
+header #page-title {
+    margin-left: 1em;
+    font-size: 1.25em;
+    font-style: italic;
+}
+
+/* Style the navigation bar */
+
+header nav {
+    background-color: #880404;
+    margin: -1em 0em 0em 0em;
+    padding: 6px;
+}
+
+header nav a {
+    color: #ddd;
+    padding: 3px 16px 3px 3px;
+}
+
+header nav a:hover {
+    color: #fff;
+}
+
+/* Style the search form */
+
+header form {
+    margin: 1em 0em 1em 0em;
+}
+
+header form input {
+    padding: 0.5em;
+    width: 85%;
+}
+
+header form button {
+    padding: 0.5em;
+    float: right;
+}
+
+/* Override styling for smaller screens */
+
+@media screen and (max-device-width 720px) {
+    body {
+	all: rever;
+    }
+}
