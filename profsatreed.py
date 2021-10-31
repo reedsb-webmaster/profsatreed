@@ -56,10 +56,10 @@ class Handler(CGIHTTPRequestHandler):
             else:
                 try:
                     lpath = self.translate_path(self.path)
-                    self.send_response(200)
-                    self.send_header("Content-type", self.guess_type(lpath))
-                    self.end_headers()
                     with open(lpath, "rb") as file:
+                        self.send_response(200)
+                        self.send_header("Content-type", self.guess_type(lpath))
+                        self.end_headers()
                         self.wfile.write(file.read())
                 except FileNotFoundError:
                     self.send_error(404)
