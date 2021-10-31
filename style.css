@@ -63,8 +63,30 @@ header form button {
 
 /* Override styling for smaller screens */
 
-@media screen and (max-device-width 720px) {
+@media screen and (max-device-width: 720px) {
+    /* General */
     body {
-	all: rever;
+        all: reset;
+        margin: 0.25em;
+    }
+
+    /* Title */
+    header #page-title {
+        text-align: right;
+        display: block;
+    }
+
+    /* Navigation bar */
+    header nav a {
+        display: block;
+    }
+
+    /* Search input */
+    /* FIXME: this will cause the input box and button to overlap on really
+     * small screens.  I tried reseting everything, setting the input to 100%,
+     * and telling the button to display: block, but that just cause
+     * everything to overrun the page off to the right. */
+    header form input {
+        width: 75%;
     }
 }
