@@ -10,6 +10,10 @@ import traceback
 
 t = Template(filename="template.html")
 
+advisor_form = "https://docs.google.com/forms/d/e/1FAIpQLSe750TrU5eKALR8WIZxF_4sKmpKwEnd77-1fNHCvCoMbkCj-Q/viewform?embedded=true"
+
+professor_form = "https://docs.google.com/forms/d/e/1FAIpQLSe750TrU5eKALR8WIZxF_4sKmpKwEnd77-1fNHCvCoMbkCj-Q/viewform?embedded=true"
+
 class DataNotFound(Exception):
     """
     Raised to signal the server to return a 404 when some information
@@ -23,6 +27,24 @@ def page_home(path: str) -> str:
     return t.render(title = "Home | Profs at Reed",
                     pageheader = "Home",
                     body = "Welcome!")
+
+def page_advisor_feedback(path: str) -> str:
+    """
+    Assemble a feedback form for the advisor role.  The PATH argument is
+    unused
+    """
+    return t.render(title = "Advisor Feedback | Profs at Reed",
+                    pageheader = "Advisor Feedback",
+                    body = "<iframe src='" + professor_form + "'>loading...<iframe>")
+
+def page_professor_feedback(path: str) -> str:
+    """
+    Assemble a feedback form for the advisor role.  The PATH argument is
+    unused
+    """
+    return t.render(title = "Professor Feedback | Profs at Reed",
+                    pageheader = "Professor Feedback",
+                    body = "<iframe src='" + professor_form + "'>loading...<iframe>")
 
 def responder(req, pagebuilder):
     """
@@ -53,6 +75,10 @@ class Handler(CGIHTTPRequestHandler):
         try:
             if self.path == "/":
                 responder(self, page_home)
+            elif self.path == "/advisor-feedback":
+                responder(self, page_advisor_feedback)
+            elif self.path == "/professor-feedback":
+                responder(self, page_professor_feedback)
             else:
                 try:
                     lpath = self.translate_path(self.path)
