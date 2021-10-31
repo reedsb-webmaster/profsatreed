@@ -12,6 +12,13 @@ a {
     color: #880404;
 }
 
+/* Style the embedded Google Forms */
+
+iframe {
+    width: 100%;
+    border: none;
+}
+
 /* Style the header */
 
 header a {
