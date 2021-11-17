@@ -2,4 +2,4 @@
 // All JavaScript goes in here
 //
 
-alert("Test")
+console.log("JS is working fine")
