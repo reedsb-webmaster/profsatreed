@@ -2,7 +2,7 @@
 // All JavaScript goes in here
 //
 
-const api_key   = "AIzaSyBI6UWWW3cn5La1bbLO5geSvYVNWEqwYEE";
+const api_key   = "🖕";
 const client_id = "440799916291-rfcs9c051ke7pla7n588sok57t9g60bi.apps.googleusercontent.com";
 const sheet_id  = "1lmlJA0cH4x51C1wshULfHPgRRX9vNtgy5NYuCLLsUV0";
 
