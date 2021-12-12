@@ -31,7 +31,14 @@ function main() {
     switch (window.location.href.split("/")[3]) {
     case "":
     case "index.html":
-        display("Display the site's summary here");
+        // This here code is an ugly attempt at extracting the json from
+        // our test sheet.
+        fetch(sheet).then(response => response.json()).then(response => {
+            var disp = "<pre>";
+            for(var property in response)
+                disp +=  property + " = " + response[property] + "<br>"
+            display(disp + "</pre>")
+        });
         break;
     case "advisor_feedback.html":
         display("<iframe src='" + advisor_form + "'>loading...<iframe>")
