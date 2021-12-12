@@ -6,8 +6,19 @@ const api_key   = "AIzaSyBI6UWWW3cn5La1bbLO5geSvYVNWEqwYEE";
 const client_id = "440799916291-rfcs9c051ke7pla7n588sok57t9g60bi.apps.googleusercontent.com";
 const sheet_id  = "1lmlJA0cH4x51C1wshULfHPgRRX9vNtgy5NYuCLLsUV0";
 
-const advisor_form = "https://docs.google.com/forms/d/e/1FAIpQLSe750TrU5eKALR8WIZxF_4sKmpKwEnd77-1fNHCvCoMbkCj-Q/viewform?embedded=true"
-const professor_form = "https://docs.google.com/forms/d/e/1FAIpQLSe750TrU5eKALR8WIZxF_4sKmpKwEnd77-1fNHCvCoMbkCj-Q/viewform?embedded=true"
+const professor_form = "https://docs.google.com/forms/d/e/" +
+      "1FAIpQLSe750TrU5eKALR8WIZxF_4sKmpKwEnd77-1fNHCvCoMbkCj-Q" +
+      "/viewform?embedded=true"
+const advisor_form   = "https://docs.google.com/forms/d/e/" +
+      "1FAIpQLSe750TrU5eKALR8WIZxF_4sKmpKwEnd77-1fNHCvCoMbkCj-Q" +
+      "/viewform?embedded=true"
+
+const sheet = "https://sheets.googleapis.com/v4/spreadsheets/" +
+      sprdsht_id +
+      "/?key=" +
+      api_key +
+      "&includeGridData=true"
+
 
 function display(html) {
     document.getElementsByTagName("article")[0].innerHTML = html;
