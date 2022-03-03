@@ -27,13 +27,17 @@ const api_key = "AIzaSyBI6UWWW3cn5La1bbLO5geSvYVNWEqwYEE"
 const dataRange = "Data!E17:H40";
 const refRange = "Ref!B2:I4";
 
+var dataResponse;
+var refResponse;
+var refArray;
+var headerArray;
+
 
 function display(html) {
     document.getElementsByTagName("article")[0].innerHTML = html;
 }
 
-function generateWebsiteString(range){    //range must be of format "ColumnRow:ColumnRow" between the start cell and end cell, can work "diagonally"
-  sheet_id  = main_sheet_id
+function generateWebsiteString(range, sheet_id){    //range must be of format "ColumnRow:ColumnRow" between the start cell and end cell, can work "diagonally"
   return "https://sheets.googleapis.com/v4/spreadsheets/" +
           sheet_id +
           "?includeGridData=true" +
@@ -43,10 +47,13 @@ function generateWebsiteString(range){    //range must be of format "ColumnRow:C
           api_key
 }
 
-async function fetchIt(sheet){
+async function fetchIt(range, string){
+  sheet = generateWebsiteString(range, string)
   out = await fetch(sheet).then(response => response.json()).then(data => {
     rowData = getDataObject(data);
     return rowData;
+  }).catch(response => {
+    return false
   })
   return out;
 }
@@ -86,8 +93,8 @@ function getNMElement(n,m,rowData){ //combines the earlier two functions and get
 }
 
 function createArray(row, rowData){ //converts the given row into an array
-  outArr = Array()
-  i = 0
+  outArr = [];
+  let i = 0;
   headRow = getNthRow(row, rowData)
   while (append = getMthColumnData(i, headRow)){
     outArr.push(append)
@@ -102,7 +109,7 @@ function findColumn(arr, title){
 
 
 
-function findProfessor(data, reference, refArray, professor){ //returns an array of the full rows where "professor" exists, or returns false
+function findProfessor(data, reference, refArray, professor){ //returns an object of the full rows where "professor" exists, or returns false
   //find the row(s) where the professor exists
   refIndex = findColumn(refArray, professor);
   if (refIndex == -1) {
@@ -113,7 +120,7 @@ function findProfessor(data, reference, refArray, professor){ //returns an array
       totRows = Number(getNMElement(2, refIndex, reference));
 
       outData = [];
-      j = 0;
+      let j = 0;
       while (j < totRows){
         outData.push(createArray(startRow + j, data));
         j++;
@@ -127,6 +134,33 @@ function findProfessor(data, reference, refArray, professor){ //returns an array
 
 }
 
+function displayResults(rowArray){
+  output = "";
+  let n = 0
+  while (n < rowArray.length){
+    output += "<p>"+rowArray[n]+"</p>";
+    n++
+  }
+  document.getElementById("results").innerHTML = output;
+}
+
+
+
+function displayFail(which){
+  switch (which) {
+    case "prof":   //prof fail
+      document.getElementById("results").innerHTML = "There is no data for that professor, please try again";
+      break;
+    case "name":   //name fail
+      document.getElementById("results").innerHTML = "There was an error reading the name you inputted, please try again";
+      break;
+    default:
+      document.getElementById("results").innerHTML = "Something went wrong, sorry please try again";
+  }
+}
+
+
+
 
 // Entrypoint of the dynamic portions of this site, called immediately after
 // we source Google's sheets SDK in order to set up the client session then
@@ -137,18 +171,11 @@ async function main() {
     case "index.html":
         // This here code is an ugly attempt at extracting the json from
         // our test sheet.
-        dataSheet = generateWebsiteString(dataRange);
-        const dataResponse = await fetchIt(dataSheet);
-        refSheet =generateWebsiteString(refRange);
-        const refResponse = await fetchIt(refSheet);
+        sheet_i  = main_sheet_id
+        dataResponse = await fetchIt(dataRange, sheet_i);
+        refResponse = await fetchIt(refRange, sheet_i);
         refArray = createArray(0,refResponse);
         headerArray = createArray(0, dataResponse);
-
-
-        dataObj = findProfessor(dataResponse, refResponse, 'Lucas', refArray);
-        display(dataObj);
-
-
 
         break;
     case "advisor_feedback.html":
@@ -166,4 +193,20 @@ async function main() {
     default:
         display("If you're seeing this the webmaster broke something")
     }
+}
+
+
+function onSearch(){
+  var name = document.getElementById("searchForm");
+  name = name.elements[0].value;
+  if (name){
+    prof = findProfessor(dataResponse,refResponse, refArray, name);
+    if (prof){
+      displayResults(prof);
+    }else {
+      displayFail("prof");
+    }
+  }else{
+    displayFail("name");
+  }
 }

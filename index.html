@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Home | Profs at Reed</title>
-    <meta name='viewport' content='width=device-width, intial-scale=1'>
+    <!-- <meta name='viewport' content='width=device-width, intial-scale=1'> -->
     <link rel='stylesheet' href='style.css' type='text/css' media='screen'>
   </head>
   <body>
@@ -15,9 +15,11 @@
         <a href='professor_feedback.html'>Professor Feedback</a>
         <a href='results.html'>View Feedback</a>
       </nav>
-      <form id='search' action='/search' method='GET'>
-        <input type='text'>
-        <button>Search</button>
+      <!-- <form id='search' action='/search' method='GET'> -->
+      <form id='searchForm'>
+        Professor Name: <input type='text' name="profName"><br>
+      </form>
+        <button onclick="onSearch()">Search</button>
       </form>
     </header>
     <hr>
@@ -26,6 +28,8 @@
 	Sorry, we were forced to use JavaScript to load this site's content
       </noscript>
     </article>
+    <div id="results">
+    </div>
     <hr>
     <footer>
       <small>
@@ -35,4 +39,3 @@
   </body>
   <script type='text/javascript' src='main.js' onload="main()"></script>
 </html>
-
