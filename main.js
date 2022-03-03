@@ -2,9 +2,16 @@
 // All JavaScript goes in here
 //
 
-const api_key   = "🖕";
+// const api_key   = "🖕";
+/*
+const api_key   = "AIzaSyBI6UWWW3cn5La1bbLO5geSvYVNWEqwYEE";
 const client_id = "440799916291-rfcs9c051ke7pla7n588sok57t9g60bi.apps.googleusercontent.com";
 const sheet_id  = "1lmlJA0cH4x51C1wshULfHPgRRX9vNtgy5NYuCLLsUV0";
+
+
+const range = "A3:B6"
+const majorDimension = "COLUMNS"
+*/
 
 const professor_form = "https://docs.google.com/forms/d/e/" +
       "1FAIpQLSe750TrU5eKALR8WIZxF_4sKmpKwEnd77-1fNHCvCoMbkCj-Q" +
@@ -13,32 +20,136 @@ const advisor_form   = "https://docs.google.com/forms/d/e/" +
       "1FAIpQLSe750TrU5eKALR8WIZxF_4sKmpKwEnd77-1fNHCvCoMbkCj-Q" +
       "/viewform?embedded=true"
 
-const sheet = "https://sheets.googleapis.com/v4/spreadsheets/" +
-      sprdsht_id +
-      "/?key=" +
-      api_key +
-      "&includeGridData=true"
+const main_sheet_id = "1lmlJA0cH4x51C1wshULfHPgRRX9vNtgy5NYuCLLsUV0"
+
+const api_key = "AIzaSyBI6UWWW3cn5La1bbLO5geSvYVNWEqwYEE"
+
+const dataRange = "Data!E17:H40";
+const refRange = "Ref!B2:I4";
 
 
 function display(html) {
     document.getElementsByTagName("article")[0].innerHTML = html;
 }
 
+function generateWebsiteString(range){    //range must be of format "ColumnRow:ColumnRow" between the start cell and end cell, can work "diagonally"
+  sheet_id  = main_sheet_id
+  return "https://sheets.googleapis.com/v4/spreadsheets/" +
+          sheet_id +
+          "?includeGridData=true" +
+          "&ranges=" +
+          range +
+          "&key=" +
+          api_key
+}
+
+async function fetchIt(sheet){
+  out = await fetch(sheet).then(response => response.json()).then(data => {
+    rowData = getDataObject(data);
+    return rowData;
+  })
+  return out;
+}
+
+function getDataObject(response){  //returns a rowData object, has all the rows the data came with
+  obj = response.sheets;
+  obj = Object.values(obj)[0]
+  obj = obj.data
+  obj = Object.values(obj)[0]
+  obj = obj.rowData
+  return obj
+}
+
+function getNthRow(n, rowData){ //returns the specific row object that you want, 0 based indexing
+  out = Object.values(rowData)[n];
+  if (out != null){
+    out = Object.values(out)[0];
+    return out;
+  }else{
+    return false;
+  }
+}
+
+
+function getMthColumnData(m, row){//returns the contents of the mth column for a GIVEN row, not rowData object
+  tmp = Object.values(row)[m]
+  if (tmp != null){
+    return tmp.formattedValue
+  }else {
+    return false
+  }
+}
+
+function getNMElement(n,m,rowData){ //combines the earlier two functions and gets the data in cell (n,m), shouldn't be used much since it doesn't save the row Object
+  row = getNthRow(n,rowData)
+  return getMthColumnData(m,row)
+}
+
+function createArray(row, rowData){ //converts the given row into an array
+  outArr = Array()
+  i = 0
+  headRow = getNthRow(row, rowData)
+  while (append = getMthColumnData(i, headRow)){
+    outArr.push(append)
+    i++
+  }
+  return outArr
+}
+
+function findColumn(arr, title){
+  return arr.indexOf(title)
+}
+
+
+
+function findProfessor(data, reference, refArray, professor){ //returns an array of the full rows where "professor" exists, or returns false
+  //find the row(s) where the professor exists
+  refIndex = findColumn(refArray, professor);
+  if (refIndex == -1) {
+    return false;
+  } else {
+    startRow = Number(getNMElement(1, refIndex, reference)) + 1;    //if we fix the formatting of the index listing on the sheet we don't need this
+    if (startRow){
+      totRows = Number(getNMElement(2, refIndex, reference));
+
+      outData = [];
+      j = 0;
+      while (j < totRows){
+        outData.push(createArray(startRow + j, data));
+        j++;
+      }
+      return outData;
+
+    }else{
+      return false;
+  }
+  }
+
+}
+
+
 // Entrypoint of the dynamic portions of this site, called immediately after
 // we source Google's sheets SDK in order to set up the client session then
 // fill in site content.
-function main() {
+async function main() {
     switch (window.location.href.split("/")[3]) {
     case "":
     case "index.html":
         // This here code is an ugly attempt at extracting the json from
         // our test sheet.
-        fetch(sheet).then(response => response.json()).then(response => {
-            var disp = "<pre>";
-            for(var property in response)
-                disp +=  property + " = " + response[property] + "<br>"
-            display(disp + "</pre>")
-        });
+        dataSheet = generateWebsiteString(dataRange);
+        const dataResponse = await fetchIt(dataSheet);
+        refSheet =generateWebsiteString(refRange);
+        const refResponse = await fetchIt(refSheet);
+        refArray = createArray(0,refResponse);
+        headerArray = createArray(0, dataResponse);
+
+
+        dataObj = findProfessor(dataResponse, refResponse, 'Lucas', refArray);
+        display(dataObj);
+
+
+
         break;
     case "advisor_feedback.html":
         display("<iframe src='" + advisor_form + "'>loading...<iframe>")
