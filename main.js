@@ -209,6 +209,26 @@ async function main() {
     }
 }
 
+function toggleProfessor() {
+  dataResponse = profResponse;
+  refResponse = profRef;
+  refArray = profRefArray;
+  headerArray = profHeaderArray;
+
+  document.getElementById("profButton").style.backgroundColor = "red";
+  document.getElementById("advisorButton").style.backgroundColor = "white";
+}
+
+function toggleAdvisor() {
+  dataResponse = advisorResponse;
+  refResponse = advisorRef;
+  refArray = advisorRefArray;
+  headerArray = advisorHeaderArray;
+
+  document.getElementById("profButton").style.backgroundColor = "white";
+  document.getElementById("advisorButton").style.backgroundColor = "red";
+}
+
 
 function onSearch(){
   var name = document.getElementById("searchForm");
