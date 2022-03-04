@@ -189,7 +189,6 @@ async function main() {
         refResponse = await fetchIt(advisorRefRange, sheet_i);
         refArray = createArray(0,refResponse);
         headerArray = createArray(0, dataResponse);
-        display(headerArray)
 
 
         break;
