@@ -25,8 +25,8 @@ const professorDataRange = "Data!E17:H40";
 const professorRefRange = "Ref!B2:I40";
 
 const advisorSheetId = "1I4xk2bHo6kYdddThQ3wi70egkMzTND40llPcVrEE3Kc";
-const advisorDataRange = "Data!A1:D40";
-const advisorRefRange = "Ref!B3:K40"
+const advisorDataRange = "Data!A1:D";
+const advisorRefRange = "Ref!B3:N"
 
 const api_key = "AIzaSyBI6UWWW3cn5La1bbLO5geSvYVNWEqwYEE"
 
