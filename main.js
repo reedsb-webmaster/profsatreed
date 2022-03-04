@@ -21,12 +21,12 @@ const advisor_form   = "https://docs.google.com/forms/d/e/" +
       "/viewform?embedded=true"
 
 const professorSheetId = "1lmlJA0cH4x51C1wshULfHPgRRX9vNtgy5NYuCLLsUV0";
-const professorDataRange = "Data!E17:H40";
-const professorRefRange = "Ref!B2:I40";
+const professorDataRange = "Data!E17:H50";
+const professorRefRange = "Ref!B2:M50";
 
 const advisorSheetId = "1I4xk2bHo6kYdddThQ3wi70egkMzTND40llPcVrEE3Kc";
-const advisorDataRange = "Data!A1:D";
-const advisorRefRange = "Ref!B3:N"
+const advisorDataRange = "Data!A1:D50";
+const advisorRefRange = "Ref!B3:N50";
 
 const api_key = "AIzaSyBI6UWWW3cn5La1bbLO5geSvYVNWEqwYEE"
 
@@ -146,8 +146,8 @@ function findProfessor(data, reference, refArray, professor){ //returns an objec
 
 }
 
-function displayResults(rowArray){
-  output = "";
+function displayResults(rowArray, headerArray){
+  output = String(headerArray);
   let n = 0
   while (n < rowArray.length){
     output += "<p>"+rowArray[n]+"</p>";
@@ -184,13 +184,12 @@ async function main() {
         // This here code is an ugly attempt at extracting the json from
         // our test sheet
 
-        sheet_i  = advisorSheetId
-        dataResponse = await fetchIt(advisorDataRange, sheet_i);
-        refResponse = await fetchIt(advisorRefRange, sheet_i);
+        sheet_i  = professorSheetId
+        dataResponse = await fetchIt(professorDataRange, sheet_i);
+        refResponse = await fetchIt(professorRefRange, sheet_i);
         refArray = createArray(0,refResponse);
         headerArray = createArray(0, dataResponse);
-
-
+        
         break;
     case "advisor_feedback.html":
         display("<iframe src='" + advisor_form + "'>loading...<iframe>")
@@ -244,7 +243,7 @@ function onSearch(){
   if (name){
     prof = findProfessor(dataResponse,refResponse, refArray, name);
     if (prof){
-      displayResults(prof);
+      displayResults(prof,headerArray);
     }else {
       displayFail("prof");
     }
