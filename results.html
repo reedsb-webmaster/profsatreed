@@ -15,16 +15,22 @@
         <a href='professor_feedback.html'>Professor Feedback</a>
         <a href='results.html'>View Feedback</a>
       </nav>
-      <form id='search' action='/search' method='GET'>
-        <input type='text'>
-        <button>Search</button>
 
       <p>
         Select if you would like to lookup professor or advisor information
       </p>
       <button id="profButton" onclick="toggleProfessor()">Professor Feedback</button>
       <button id ="advisorButton" onclick="toggleAdvisor()">Advisor Feedback</button>
+
+      <form id='searchForm'>
+        Professor Name: <input type='text' name="profName"><br>
       </form>
+        <button onclick="onSearch()">Search</button>
+      </form>
+
+      <div id="results">
+
+      </div>
     </header>
     <hr>
     <article>
@@ -41,4 +47,3 @@
   </body>
   <script type='text/javascript' src='main.js' onload="main()"></script>
 </html>
-
