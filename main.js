@@ -186,6 +186,7 @@ async function main() {
 
         sheet_i  = advisorSheetId
         dataResponse = await fetchIt(advisorDataRange, sheet_i);
+        refResponse = await fetchIt(advisorRefRange, sheet_i);
         refArray = createArray(0,refResponse);
         headerArray = createArray(0, dataResponse);
         display(headerArray)
@@ -199,7 +200,15 @@ async function main() {
         display("<iframe src='" + professor_form + "'>loading...<iframe>")
         break;
     case "results.html":
-        display("Display a list of all results");
+        profResponse = await fetchIt(professorDataRange, professorSheetId);
+        profRef = await fetchIt(professorRefRange, professorSheetId);
+        profRefArray = createArray(0,profRef);
+        profHeaderArray = createArray(0, profResponse);
+
+        advisorResponse = await fetchIt(advisorDataRange, advisorSheetId);
+        advisorRef = await fetchIt(advisorRefRange, advisorSheetId);
+        advisorRefArray = createArray(0, advisorRef);
+        advisorHeaderArray = createArray(0, advisorResponse);
         break;
     case "search.html":
         display("Display search results");
