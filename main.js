@@ -20,17 +20,29 @@ const advisor_form   = "https://docs.google.com/forms/d/e/" +
       "1FAIpQLSe750TrU5eKALR8WIZxF_4sKmpKwEnd77-1fNHCvCoMbkCj-Q" +
       "/viewform?embedded=true"
 
-const main_sheet_id = "1lmlJA0cH4x51C1wshULfHPgRRX9vNtgy5NYuCLLsUV0"
+const professorSheetId = "1lmlJA0cH4x51C1wshULfHPgRRX9vNtgy5NYuCLLsUV0";
+const professorDataRange = "Data!E17:H40";
+const professorRefRange = "Ref!B2:I40";
+
+const advisorSheetId = "1I4xk2bHo6kYdddThQ3wi70egkMzTND40llPcVrEE3Kc";
+const advisorDataRange = "Data!A1:D40";
+const advisorRefRange = "Ref!B3:K40"
 
 const api_key = "AIzaSyBI6UWWW3cn5La1bbLO5geSvYVNWEqwYEE"
-
-const dataRange = "Data!E17:H40";
-const refRange = "Ref!B2:I4";
 
 var dataResponse;
 var refResponse;
 var refArray;
 var headerArray;
+var profResponse;
+var profRef;
+var profRefArray;
+var profHeaderArray;
+
+var advisorResponse;
+var advisorRef;
+var advisorRefArray;
+var advisorHeaderArray;
 
 
 function display(html) {
@@ -170,12 +182,14 @@ async function main() {
     case "":
     case "index.html":
         // This here code is an ugly attempt at extracting the json from
-        // our test sheet.
-        sheet_i  = main_sheet_id
-        dataResponse = await fetchIt(dataRange, sheet_i);
-        refResponse = await fetchIt(refRange, sheet_i);
+        // our test sheet
+
+        sheet_i  = advisorSheetId
+        dataResponse = await fetchIt(advisorDataRange, sheet_i);
         refArray = createArray(0,refResponse);
         headerArray = createArray(0, dataResponse);
+        display(headerArray)
+
 
         break;
     case "advisor_feedback.html":
