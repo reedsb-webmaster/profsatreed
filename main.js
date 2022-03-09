@@ -117,7 +117,11 @@ function createArray(row, rowData){ //converts the given row into an array
 }
 
 function findColumn(arr, title){
-  return arr.indexOf(title)
+  if (typeof(arr)=="undefined"){
+    return false;
+  }else{
+    return arr.indexOf(title);
+  }
 }
 
 
