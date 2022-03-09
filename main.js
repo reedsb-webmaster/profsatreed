@@ -2,17 +2,6 @@
 // All JavaScript goes in here
 //
 
-// const api_key   = "🖕";
-/*
-const api_key   = "AIzaSyBI6UWWW3cn5La1bbLO5geSvYVNWEqwYEE";
-const client_id = "440799916291-rfcs9c051ke7pla7n588sok57t9g60bi.apps.googleusercontent.com";
-const sheet_id  = "1lmlJA0cH4x51C1wshULfHPgRRX9vNtgy5NYuCLLsUV0";
-
-
-const range = "A3:B6"
-const majorDimension = "COLUMNS"
-*/
-
 const professor_form = "https://docs.google.com/forms/d/e/" +
       "1FAIpQLSe750TrU5eKALR8WIZxF_4sKmpKwEnd77-1fNHCvCoMbkCj-Q" +
       "/viewform?embedded=true"
