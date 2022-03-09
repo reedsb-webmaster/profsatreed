@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>View Feedback | Profs at Reed</title>
-    <meta name='viewport' content='width=device-width, intial-scale=1'>
+    <!-- <meta name='viewport' content='width=device-width, intial-scale=1'> -->
     <link rel='stylesheet' href='style.css' type='text/css' media='screen'>
   </head>
   <body>
@@ -21,12 +21,11 @@
       </p>
       <button id="profButton" onclick="toggleProfessor()">Professor Feedback</button>
       <button id ="advisorButton" onclick="toggleAdvisor()">Advisor Feedback</button>
-
-      <form id='searchForm'>
-        Professor Name: <input type='text' name="profName"><br>
-      </form>
-        <button onclick="onSearch()">Search</button>
-      </form>
+      
+      <p>
+        Professor Name: <input id="searchBox">
+      </p>
+      <button id="searchButton" onclick="onSearch()">Search</button>
 
       <div id="results">
 

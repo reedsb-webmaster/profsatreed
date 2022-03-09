@@ -158,10 +158,10 @@ function displayResults(rowArray, headerArray){
 
 
 
-function displayFail(which){
+function displayFail(which,name){
   switch (which) {
     case "prof":   //prof fail
-      document.getElementById("results").innerHTML = "There is no data for that professor, please try again";
+      document.getElementById("results").innerHTML = "There is no data for professor,"+name+", please try again";
       break;
     case "name":   //name fail
       document.getElementById("results").innerHTML = "There was an error reading the name you inputted, please try again";
@@ -189,7 +189,7 @@ async function main() {
         refResponse = await fetchIt(professorRefRange, sheet_i);
         refArray = createArray(0,refResponse);
         headerArray = createArray(0, dataResponse);
-        
+
         break;
     case "advisor_feedback.html":
         display("<iframe src='" + advisor_form + "'>loading...<iframe>")
@@ -238,16 +238,24 @@ function toggleAdvisor() {
 
 
 function onSearch(){
-  var name = document.getElementById("searchForm");
-  name = name.elements[0].value;
+  var name = document.getElementById("searchBox");
+  name = name.value;
   if (name){
     prof = findProfessor(dataResponse,refResponse, refArray, name);
     if (prof){
       displayResults(prof,headerArray);
     }else {
-      displayFail("prof");
+      displayFail("prof",name);
     }
   }else{
-    displayFail("name");
+    displayFail("name",name);
   }
 }
+
+var input = document.getElementById("searchBox");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("searchButton").click();
+  }
+});
