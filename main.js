@@ -169,6 +169,19 @@ function makeHeadRow(headerArray){
 }
 
 function displayResults(rowArray, headerArray){
+  let output = "<table>";
+  output += makeRow(headerArray);
+  let n = 0;
+  while (n < rowArray.length){
+    output += makeRow(rowArray[n]);
+    n++
+  }
+  document.getElementById("results").innerHTML = output;
+}
+
+
+/*
+function displayResults(rowArray, headerArray){
   output = String(headerArray);
   let n = 0
   while (n < rowArray.length){
@@ -179,6 +192,7 @@ function displayResults(rowArray, headerArray){
 }
 
 
+*/
 
 function displayFail(which,name){
   switch (which) {
