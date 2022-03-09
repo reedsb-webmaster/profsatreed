@@ -43,6 +43,7 @@ var advisorResponse;
 var advisorRef;
 var advisorRefArray;
 var advisorHeaderArray;
+var isset = false;
 
 
 function display(html) {
@@ -166,6 +167,9 @@ function displayFail(which,name){
     case "name":   //name fail
       document.getElementById("results").innerHTML = "There was an error reading the name you inputted, please try again";
       break;
+    case "button": //haven't pressed a professor button yet for if they want advisor/professor
+      document.getElementById("results").innerHTML = "Please select if you would like to look up professor or advisor reviews, then try submitting again";
+      break;
     default:
       document.getElementById("results").innerHTML = "Something went wrong, sorry please try again";
   }
@@ -221,6 +225,7 @@ function toggleProfessor() {
   refResponse = profRef;
   refArray = profRefArray;
   headerArray = profHeaderArray;
+  isset = true;
 
   document.getElementById("profButton").style.backgroundColor = "red";
   document.getElementById("advisorButton").style.backgroundColor = "white";
@@ -231,6 +236,7 @@ function toggleAdvisor() {
   refResponse = advisorRef;
   refArray = advisorRefArray;
   headerArray = advisorHeaderArray;
+  isset = true;
 
   document.getElementById("profButton").style.backgroundColor = "white";
   document.getElementById("advisorButton").style.backgroundColor = "red";
@@ -238,17 +244,21 @@ function toggleAdvisor() {
 
 
 function onSearch(){
-  var name = document.getElementById("searchBox");
-  name = name.value;
-  if (name){
-    prof = findProfessor(dataResponse,refResponse, refArray, name);
-    if (prof){
-      displayResults(prof,headerArray);
-    }else {
-      displayFail("prof",name);
+  if (isset) {
+    var name = document.getElementById("searchBox");
+    name = name.value;
+    if (name){
+      prof = findProfessor(dataResponse,refResponse, refArray, name);
+      if (prof){
+        displayResults(prof,headerArray);
+      }else {
+        displayFail("prof",name);
+      }
+    }else{
+      displayFail("name",name);
     }
   }else{
-    displayFail("name",name);
+    displayFail("button","no")
   }
 }
 
