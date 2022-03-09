@@ -146,6 +146,27 @@ function findProfessor(data, reference, refArray, professor){ //returns an objec
   }
 
 }
+function makeRow(row){
+  let i = 0;
+  let out = "<tr>";
+  while (row[i]){
+    out += "<td>"+row[i]+"</td>";
+    i++;
+  }
+  out += "</tr>";
+  return out;
+}
+
+function makeHeadRow(headerArray){
+  let i = 0;
+  let out = "<th>";
+  while (headerArray[i]){
+    out += "<td>"+headerArray[i]+"</td>";
+    i++;
+  }
+  out += "</th>";
+  return out;
+}
 
 function displayResults(rowArray, headerArray){
   output = String(headerArray);
