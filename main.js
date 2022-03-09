@@ -173,13 +173,14 @@ function makeHeadRow(headerArray){
 }
 
 function displayResults(rowArray, headerArray){
-  let output = "<table>";
+  let output = "<div class=\"table-wrapper\"><table class=\"fl-table\">";
   output += makeRow(headerArray);
   let n = 0;
   while (n < rowArray.length){
     output += makeRow(rowArray[n]);
     n++
   }
+  output += "</table></div>"
   document.getElementById("results").innerHTML = output;
 }
 
