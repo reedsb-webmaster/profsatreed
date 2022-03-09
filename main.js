@@ -190,14 +190,12 @@ function displayResults(rowArray, headerArray){
   }
   document.getElementById("results").innerHTML = output;
 }
-
-
 */
 
 function displayFail(which,name){
   switch (which) {
     case "prof":   //prof fail
-      document.getElementById("results").innerHTML = "There is no data for professor,"+name+", please try again";
+      document.getElementById("results").innerHTML = "There is no data for professor, "+name+", please try again";
       break;
     case "name":   //name fail
       document.getElementById("results").innerHTML = "There was an error reading the name you inputted, please try again";
