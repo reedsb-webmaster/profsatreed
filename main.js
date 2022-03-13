@@ -4,14 +4,15 @@
 
 const professor_form = "https://docs.google.com/forms/d/e/" +
       "1FAIpQLSe750TrU5eKALR8WIZxF_4sKmpKwEnd77-1fNHCvCoMbkCj-Q" +
-      "/viewform?embedded=true"
-const advisor_form   = "https://docs.google.com/forms/d/e/" +
-      "1FAIpQLSe750TrU5eKALR8WIZxF_4sKmpKwEnd77-1fNHCvCoMbkCj-Q" +
-      "/viewform?embedded=true"
+      "/embedded=true"
+const advisor_form = "https://docs.google.com/forms/d/e/" +
+      "1FAIpQLSc60U5LNQFxcrewHO1P6Gk4rpYtlkbYxBl0Q_yseNiBgqQ9zg" +
+      "/embedded=true"
 
 const professorSheetId = "1lmlJA0cH4x51C1wshULfHPgRRX9vNtgy5NYuCLLsUV0";
 const professorDataRange = "Data!E17:H50";
 const professorRefRange = "Ref!B2:M50";
+const indexRange = "index!B2:E2";
 
 const advisorSheetId = "1I4xk2bHo6kYdddThQ3wi70egkMzTND40llPcVrEE3Kc";
 const advisorDataRange = "Data!A1:D50";
@@ -216,10 +217,12 @@ async function main() {
         // our test sheet
 
         sheet_i  = professorSheetId
-        dataResponse = await fetchIt(professorDataRange, sheet_i);
-        refResponse = await fetchIt(professorRefRange, sheet_i);
-        refArray = createArray(0,refResponse);
-        headerArray = createArray(0, dataResponse);
+        respo = await fetchIt(indexRange, sheet_i);
+        dataRow = getNthRow(0, respo);
+        document.getElementById("mainTitle").innerHTML = getMthColumnData(0,dataRow);
+        document.getElementById("bodyOne").innerHTML = getMthColumnData(1,dataRow);
+        document.getElementById("bodyTwo").innerHTML = getMthColumnData(2,dataRow);
+        document.getElementById("bodyThree").innerHTML = getMthColumnData(3,dataRow);
 
         break;
     case "advisor_feedback.html":
