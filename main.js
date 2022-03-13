@@ -32,7 +32,7 @@ var advisorResponse;
 var advisorRef;
 var advisorRefArray;
 var advisorHeaderArray;
-var isset = false;
+var isset = false; //single bit/binary to determine if either of the buttons have been pressed yet
 
 
 function display(html) {
