@@ -259,6 +259,16 @@ async function main() {
     }
 }
 
+function changeActive(active){
+  active.style.backgroundColor = "#880404";
+  active.style.color = "white";
+}
+
+function changePassive(passive){
+  passive.style.backgroundColor = "white";
+  passive.style.color = "black";
+}
+
 function toggleProfessor() {
   dataResponse = profResponse;
   refResponse = profRef;
