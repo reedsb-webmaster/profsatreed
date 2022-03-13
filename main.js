@@ -311,11 +311,3 @@ function onSearch(){
     displayFail("button","no")
   }
 }
-
-var input = document.getElementById("searchBox");
-input.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-   event.preventDefault();
-   document.getElementById("searchButton").click();
-  }
-});
