@@ -276,8 +276,8 @@ function toggleProfessor() {
   headerArray = profHeaderArray;
   isset = true;
 
-  document.getElementById("profButton").style.backgroundColor = "red";
-  document.getElementById("advisorButton").style.backgroundColor = "white";
+  changeActive(document.getElementById("profButton"))
+  changePassive(document.getElementById("advisorButton"))
 }
 
 function toggleAdvisor() {
@@ -287,9 +287,10 @@ function toggleAdvisor() {
   headerArray = advisorHeaderArray;
   isset = true;
 
-  document.getElementById("profButton").style.backgroundColor = "white";
-  document.getElementById("advisorButton").style.backgroundColor = "red";
+  changePassive(document.getElementById("profButton"))
+  changeActive(document.getElementById("advisorButton"))
 }
+
 
 
 function onSearch(){
