@@ -241,6 +241,15 @@ async function main() {
         advisorRef = await fetchIt(advisorRefRange, advisorSheetId);
         advisorRefArray = createArray(0, advisorRef);
         advisorHeaderArray = createArray(0, advisorResponse);
+
+        var input = document.getElementById("searchBox");
+        input.addEventListener("keyup", function(event) {
+          if (event.keyCode === 13) {
+           event.preventDefault();
+           document.getElementById("searchButton").click();
+          }
+        });
+
         break;
     case "search.html":
         display("Display search results");
