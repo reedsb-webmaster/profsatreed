@@ -68,6 +68,24 @@ header form button {
     float: right;
 }
 
+/* button theming, generic and specific */
+.main-button {
+  border-radius:25px;
+  max-width:1000px;
+  background-color:white;
+  box-shadow:none;
+  border-color:#454545;
+  border-width:1px;
+  border-style:solid;
+  font-size:13px;
+}
+
+#searchButton:hover {
+  background-color:#880404;
+  color:white;
+}
+
+
 /* Override styling for smaller screens */
 
 @media screen and (max-device-width: 720px) {
