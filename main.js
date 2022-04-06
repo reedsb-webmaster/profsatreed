@@ -140,11 +140,13 @@ function findProfessor(data, reference, refArray, professor){ //returns an objec
   }
 
 }
-function makeRow(row){
+function makeRow(row, nameIndex){
   let i = 0;
   let out = "<tr>";
   while (row[i]){
-    out += "<td>"+row[i]+"</td>";
+    if (i!=nameIndex){
+      out += "<td>"+row[i]+"</td>";
+    }
     i++;
   }
   out += "</tr>";
@@ -173,19 +175,6 @@ function displayResults(rowArray, headerArray){
   output += "</table></div>"
   document.getElementById("results").innerHTML = output;
 }
-
-
-/*
-function displayResults(rowArray, headerArray){
-  output = String(headerArray);
-  let n = 0
-  while (n < rowArray.length){
-    output += "<p>"+rowArray[n]+"</p>";
-    n++
-  }
-  document.getElementById("results").innerHTML = output;
-}
-*/
 
 function displayFail(which,name){
   switch (which) {
