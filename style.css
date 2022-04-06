@@ -29,15 +29,17 @@ article {
 
 header a {
     text-decoration: none;
+    font-size:
 }
 
 header #title {
     font-size: 1.8em;
+    width:50%;
 }
 
 header #page-title {
     margin-left: 1em;
-    font-size: 1.25em;
+    font-size: 1.4em;
     font-style: italic;
 }
 
