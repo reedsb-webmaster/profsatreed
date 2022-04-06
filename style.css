@@ -49,6 +49,10 @@ header nav {
     background-color: #880404;
     margin: -1em 0em 0em 0em;
     padding: 6px;
+    height:3em;
+    display:flex;
+    align-items:center;
+    border-radius:15px;
 }
 
 header nav a {
