@@ -286,6 +286,7 @@ function onSearch(){
   if (isset) {
     var name = document.getElementById("searchBox");
     name = name.value;
+    name = name.toLowerCase();
     if (name){
       prof = findProfessor(dataResponse,refResponse, refArray, name);
       if (prof){
