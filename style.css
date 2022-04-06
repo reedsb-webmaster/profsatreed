@@ -16,8 +16,13 @@ a {
 /* Style the embedded Google Forms */
 
 iframe {
-    width: 100%;
-    border: none;
+  flex: 1;
+  border:none;
+}
+
+article {
+  display: flex;
+  width:100%;
 }
 
 /* Style the header */
