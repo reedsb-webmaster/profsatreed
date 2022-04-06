@@ -58,10 +58,13 @@ header nav {
 header nav a {
     color: #ddd;
     padding: 3px 16px 3px 3px;
+    font-size:1.15em;
+    transition:transform .2s;
 }
 
 header nav a:hover {
     color: #fff;
+    transform:scale(1.25);
 }
 
 /* Style the search form */
@@ -106,7 +109,6 @@ header form button {
   background-color:#880404;
   color:white;
 }
-
 
 /* Override styling for smaller screens */
 
