@@ -68,6 +68,16 @@ header form button {
     float: right;
 }
 
+.main-feedback {
+  min-height:25em;
+  max-height:75em;
+  display:flex;
+}
+.main {
+  max-height: 50em;
+}
+
+
 /* button theming, generic and specific */
 .main-button {
   border-radius:25px;
