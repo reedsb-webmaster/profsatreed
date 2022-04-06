@@ -165,11 +165,15 @@ function makeHeadRow(headerArray){
 }
 
 function displayResults(rowArray, headerArray){
-  let output = "<div class=\"table-wrapper\"><table class=\"fl-table\">";
-  output += makeRow(headerArray);
+  let nameIndex = findColumn(headerArray,"Professor Name");
+  let name = rowArray[0][nameIndex];
+
+  let output = "<p>Displaying Results for:    " + name+ "</p> <div class=\"table-wrapper\"><table class=\"fl-table\">";
+  output += makeRow(headerArray,nameIndex);
+  
   let n = 0;
   while (n < rowArray.length){
-    output += makeRow(rowArray[n]);
+    output += makeRow(rowArray[n],nameIndex);
     n++
   }
   output += "</table></div>"
