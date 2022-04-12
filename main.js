@@ -109,6 +109,11 @@ function getMthColumnData(m, row){//returns the contents of the mth column for a
 function getNMElement(n,m,rowData){ //combines the earlier two functions and gets the data in cell (n,m), shouldn't be used much since it doesn't save the row Object
   row = getNthRow(n,rowData)
   return getMthColumnData(m,row)
+  if (row != -1){
+    return getMthColumnData(m,row)
+  }else{
+    return -1;
+  }
 }
 
 function createArray(row, rowData){ //converts the given row into an array
@@ -118,6 +123,22 @@ function createArray(row, rowData){ //converts the given row into an array
   while (append = getMthColumnData(i, headRow)){
     outArr.push(append)
     i++
+  headRow = getNthRow(row,rowData)
+  if (headRow != -1){
+    let flag = true
+    while (flag){
+      append = getMthColumnData(i, headRow)
+      if (append != -1){
+        outArr.push(append)
+      } else{
+        flag = false;
+        break
+      }
+      i++
+    }
+    return outArr;
+  }else{
+    return false;
   }
   return outArr
 }
