@@ -10,7 +10,6 @@ const advisor_form = "https://docs.google.com/forms/d/e/" +
       "/embedded=true"
 
 const professorSheetId = "1lmlJA0cH4x51C1wshULfHPgRRX9vNtgy5NYuCLLsUV0";
-const professorDataRange = "Data!E17:H50";
 const professorDataRange = "Data!E17:K50";
 const professorRefRange = "Ref!B2:M50";
 const indexRange = "index!B2:E2";
@@ -90,7 +89,6 @@ function getNthRow(n, rowData){ //returns the specific row object that you want,
     out = Object.values(out)[0];
     return out;
   }else{
-    return false;
     return -1;
   }
 }
@@ -101,14 +99,12 @@ function getMthColumnData(m, row){//returns the contents of the mth column for a
   if (tmp != null){
     return tmp.formattedValue
   }else {
-    return false
     return -1;
   }
 }
 
 function getNMElement(n,m,rowData){ //combines the earlier two functions and gets the data in cell (n,m), shouldn't be used much since it doesn't save the row Object
   row = getNthRow(n,rowData)
-  return getMthColumnData(m,row)
   if (row != -1){
     return getMthColumnData(m,row)
   }else{
@@ -119,10 +115,6 @@ function getNMElement(n,m,rowData){ //combines the earlier two functions and get
 function createArray(row, rowData){ //converts the given row into an array
   outArr = [];
   let i = 0;
-  headRow = getNthRow(row, rowData)
-  while (append = getMthColumnData(i, headRow)){
-    outArr.push(append)
-    i++
   headRow = getNthRow(row,rowData)
   if (headRow != -1){
     let flag = true
@@ -140,7 +132,6 @@ function createArray(row, rowData){ //converts the given row into an array
   }else{
     return false;
   }
-  return outArr
 }
 
 function findColumn(arr, title){
@@ -159,8 +150,6 @@ function findProfessor(data, reference, refArray, professor){ //returns an objec
   if (refIndex == -1) {
     return false;
   } else {
-    startRow = Number(getNMElement(1, refIndex, reference)) + 1;    //if we fix the formatting of the index listing on the sheet we don't need this
-    if (startRow){
     startRow = Number(getNMElement(1, refIndex, reference));    //if we fix the formatting of the index listing on the sheet we don't need this
     if (startRow >= 0){
       totRows = Number(getNMElement(2, refIndex, reference));
@@ -177,7 +166,6 @@ function findProfessor(data, reference, refArray, professor){ //returns an objec
       return false;
   }
   }
-
 }
 
 function makeRow(row, nameIndex){
@@ -210,7 +198,6 @@ function displayResults(rowArray, headerArray){
 
   let output = "<p>Displaying Results for:    " + name+ "</p> <div class=\"table-wrapper\"><table class=\"fl-table\">";
   output += makeRow(headerArray,nameIndex);
-  
 
   let n = 0;
   while (n < rowArray.length){
@@ -343,9 +330,6 @@ async function main() {
     }
 }
 
-function changeActive(active){
-  active.style.backgroundColor = "#880404";
-  active.style.color = "white";
 function getProfIndices(reference, refArray, professor){ //returns an object of the full rows where "professor" exists, or returns false
   //find the row(s) where the professor exists
   refIndex = findColumn(refArray, professor);
@@ -360,9 +344,6 @@ function getProfIndices(reference, refArray, professor){ //returns an object of 
   return [startRow,totRows];
 }
 
-function changePassive(passive){
-  passive.style.backgroundColor = "white";
-  passive.style.color = "black";
 function getDataFromIndices(data, start, total){
   outData = [];
   let j = 0;
@@ -373,15 +354,7 @@ function getDataFromIndices(data, start, total){
   return outData;
 }
 
-function toggleProfessor() {
-  dataResponse = profResponse;
-  refResponse = profRef;
-  refArray = profRefArray;
-  headerArray = profHeaderArray;
-  isset = true;
 
-  changeActive(document.getElementById("profButton"))
-  changePassive(document.getElementById("advisorButton"))
 function generateProfArray(matrix, header, start, total, professor) {
 
   let profArray = matrix
@@ -425,18 +398,10 @@ function generateProfArray(matrix, header, start, total, professor) {
 
 }
 
-function toggleAdvisor() {
-  dataResponse = advisorResponse;
-  refResponse = advisorRef;
-  refArray = advisorRefArray;
-  headerArray = advisorHeaderArray;
-  isset = true;
 function makeMatrix(data){
   return getDataFromIndices(data, 0, data.length-1)
 }
 
-  changePassive(document.getElementById("profButton"))
-  changeActive(document.getElementById("advisorButton"))
 
 function makeDataArray(dataResponse, refResponse, refArray){
   profDataArray = [];
