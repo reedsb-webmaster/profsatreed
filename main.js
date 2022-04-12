@@ -494,6 +494,9 @@ function sortComfortable(a,b){
     return 0
   }
 }
+function sortDataArray(array,sortFn){
+  array.sort(sortFn)
+  return array
 }
 
 
