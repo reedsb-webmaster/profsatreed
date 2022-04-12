@@ -437,6 +437,26 @@ function makeMatrix(data){
 
   changePassive(document.getElementById("profButton"))
   changeActive(document.getElementById("advisorButton"))
+
+function makeDataArray(dataResponse, refResponse, refArray){
+  profDataArray = [];
+  let matrix = makeMatrix(dataResponse)
+  let header = matrix[0]
+  let i = 1;
+  while (i < refArray.length) {
+    var startIndex = Number(getNMElement(1,i,refResponse));
+    if (startIndex >= 0 ) {
+      var totalIndex = Number(getNMElement(2,i,refResponse))
+      if (totalIndex >= 0){
+        var useMatrix = matrix.slice(startIndex,(startIndex + totalIndex))
+        //console.log(useMatrix)
+        profDataArray.push(generateProfArray(useMatrix, header, startIndex, totalIndex, refArray[i]));
+      }
+    }
+    i++;
+  }
+  return profDataArray
+}
 }
 
 
