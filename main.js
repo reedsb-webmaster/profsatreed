@@ -254,6 +254,18 @@ function makeProfOverview(profArray){
   return toDisplay
 }
 
+function displaySummaries(array){
+  let i = 0
+  let show = "<div>"
+  while (i<array.length){
+    show += makeProfOverview(array[i])
+    show += "<hr>"
+    i++;
+  }
+  show += "</div"
+  document.getElementById("overviews").innerHTML = show;
+}
+
 
 
 // Entrypoint of the dynamic portions of this site, called immediately after
