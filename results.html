@@ -29,6 +29,27 @@
         Professor Name: <input id="searchBox">
       </p>
       <button class="main-button" id="searchButton" onclick="onSearch()">Search</button>
+      <div class="dropdown">
+        <p>
+          Sort Professors By:
+        </p>
+        <form>
+          <select id="sortCriteria" onchange="sortProfs()">
+            <option value=0 selected="selected">
+              Department
+            </option>
+            <option value=1>
+              Retake Rating
+            </option>
+            <option value=2>
+              Difficulty
+            </option>
+            <option value=3>
+              Comfortability in Class
+            </option>
+          </select>
+        </form>
+      </div>
 
       <div id="results">
       <article>
