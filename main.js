@@ -35,6 +35,7 @@ var advisorRef;
 var advisorRefArray;
 var advisorHeaderArray;
 var isset = false; //single bit/binary to determine if either of the buttons have been pressed yet
+var showOverview = true;
 
 
 function display(html) {
