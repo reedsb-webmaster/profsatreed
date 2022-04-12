@@ -457,6 +457,43 @@ function makeDataArray(dataResponse, refResponse, refArray){
   }
   return profDataArray
 }
+
+function sortDepartment(a,b){
+  if(a[departmentIndex] > b[departmentIndex]){
+    return -1
+  }else if (a[departmentIndex] < b[departmentIndex]){
+    return 1
+  }else{
+    return 0
+  }
+}
+function sortRetake(a,b){
+  if(a[retakeRatingIndex] > b[retakeRatingIndex]){
+    return -1
+  }else if (a[retakeRatingIndex] < b[retakeRatingIndex]){
+    return 1
+  }else{
+    return 0
+  }
+}
+function sortDifficulty(a,b){
+  if(a[difficultyIndex] > b[difficultyIndex]){
+    return -1
+  }else if (a[difficultyIndex] < b[difficultyIndex]){
+    return 1
+  }else{
+    return 0
+  }
+}
+function sortComfortable(a,b){
+  if(a[comfortableIndex] > b[comfortableIndex]){
+    return -1
+  }else if (a[comfortableIndex] < b[comfortableIndex]){
+    return 1
+  }else{
+    return 0
+  }
+}
 }
 
 
