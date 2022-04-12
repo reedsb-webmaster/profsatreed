@@ -331,6 +331,9 @@ async function main() {
           }
         });
 
+        dataArray = makeDataArray(profResponse, profRef, profRefArray)
+        displaySummaries(dataArray)
+
         break;
     case "search.html":
         display("Display search results");
