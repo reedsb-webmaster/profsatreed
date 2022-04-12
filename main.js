@@ -556,3 +556,37 @@ function onSearch(){
     displayFail("button","no")
   }
 }
+
+
+//functions for button management in results page
+function changeActive(active){
+  active.style.backgroundColor = "#880404";
+  active.style.color = "white";
+}
+
+function changePassive(passive){
+  passive.style.backgroundColor = "white";
+  passive.style.color = "black";
+}
+
+function toggleProfessor() {
+  dataResponse = profResponse;
+  refResponse = profRef;
+  refArray = profRefArray;
+  headerArray = profHeaderArray;
+  isset = true;
+
+  changeActive(document.getElementById("profButton"))
+  changePassive(document.getElementById("advisorButton"))
+}
+
+function toggleAdvisor() {
+  dataResponse = advisorResponse;
+  refResponse = advisorRef;
+  refArray = advisorRefArray;
+  headerArray = advisorHeaderArray;
+  isset = true;
+
+  changePassive(document.getElementById("profButton"))
+  changeActive(document.getElementById("advisorButton"))
+}
