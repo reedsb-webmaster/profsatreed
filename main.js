@@ -431,6 +431,9 @@ function toggleAdvisor() {
   refArray = advisorRefArray;
   headerArray = advisorHeaderArray;
   isset = true;
+function makeMatrix(data){
+  return getDataFromIndices(data, 0, data.length-1)
+}
 
   changePassive(document.getElementById("profButton"))
   changeActive(document.getElementById("advisorButton"))
