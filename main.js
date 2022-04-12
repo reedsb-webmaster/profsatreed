@@ -388,9 +388,9 @@ function generateProfArray(matrix, header, start, total, professor) {
     }
     i++;
   }
-  takeAgain = takeAgain/(takeNum);
-  difficulty = difficulty/(diffNum);
-  comfortable = comfortable/(comfNum);
+  takeAgain = Math.round(100*100*takeAgain/(takeNum))/100;
+  difficulty = Math.round(100*difficulty/(diffNum))/100;
+  comfortable = Math.round(100*100*comfortable/(comfNum))/100;
 
   first = profArray[0][header.indexOf("first")];
   dept = profArray[0][header.indexOf("department")];
