@@ -11,6 +11,7 @@ const advisor_form = "https://docs.google.com/forms/d/e/" +
 
 const professorSheetId = "1lmlJA0cH4x51C1wshULfHPgRRX9vNtgy5NYuCLLsUV0";
 const professorDataRange = "Data!E17:H50";
+const professorDataRange = "Data!E17:K50";
 const professorRefRange = "Ref!B2:M50";
 const indexRange = "index!B2:E2";
 
