@@ -536,6 +536,15 @@ function onSearch(){
     if (name){
       prof = findProfessor(dataResponse,refResponse, refArray, name);
       if (prof){
+        console.log(document.getElementById("overviews").style.display)
+        if (showOverview){
+          document.getElementById("overviews").style.display = 'none';
+          document.getElementById("overviews").style.visibility = 'hidden';
+
+          document.getElementById("results").style.visibility = 'visible';
+          document.getElementById("results").style.display = 'block';
+          showOverview = false;
+        }
         displayResults(prof,headerArray);
       }else {
         displayFail("prof",name);
