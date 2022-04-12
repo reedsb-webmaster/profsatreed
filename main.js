@@ -211,6 +211,7 @@ function displayResults(rowArray, headerArray){
   let output = "<p>Displaying Results for:    " + name+ "</p> <div class=\"table-wrapper\"><table class=\"fl-table\">";
   output += makeRow(headerArray,nameIndex);
   
+
   let n = 0;
   while (n < rowArray.length){
     output += makeRow(rowArray[n],nameIndex);
@@ -236,6 +237,22 @@ function displayFail(which,name){
   }
 }
 
+function makeProfOverview(profArray){
+  toDisplay = "<div class='overviewItem'><div class='overviewHeader'>";
+  toDisplay += profArray[firstNameIndex]
+  toDisplay += " "
+  toDisplay += profArray[lastnameIndex]
+  toDisplay += "</div><div class='overviewBody'><div class='overviewMember'>Department:  "
+  toDisplay += profArray[departmentIndex]
+  toDisplay += "</div><div class='overviewMember'>Take Again:  "
+  toDisplay += profArray[retakeRatingIndex]
+  toDisplay += "</div><div class='overviewMember'>Difficulty:  "
+  toDisplay += profArray[difficultyIndex]
+  toDisplay += "</div><div class = 'overviewMember'>Comfortable in Class:  "
+  toDisplay += profArray[comfortableIndex]
+  toDisplay += "</div></div></div>"
+  return toDisplay
+}
 
 
 
