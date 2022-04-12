@@ -286,6 +286,25 @@ async function main() {
         document.getElementById("bodyTwo").innerHTML = getMthColumnData(2,dataRow);
         document.getElementById("bodyThree").innerHTML = getMthColumnData(3,dataRow);
 
+        profResponse = await fetchIt(professorDataRange, professorSheetId);
+        profRef = await fetchIt(professorRefRange, professorSheetId);
+        profRefArray = createArray(0,profRef);
+        profHeaderArray = createArray(0, profResponse);
+
+        tmp = makeDataArray(profResponse, profRef, profRefArray)
+
+        console.log(tmp)
+
+        tmp = sortDataArray(tmp, sortDifficulty)
+
+        displaySummaries(tmp)
+
+        console.log(tmp);
+
+
+        //document.getElementById("bodyThree").innerHTML = tmp;
+
+
         break;
     case "advisor_feedback.html":
         display("<iframe src='" + advisor_form + "'>loading...<iframe>")
