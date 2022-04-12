@@ -39,6 +39,17 @@ var showOverview = true;
 
 var profDataArray;
 
+//for the "arrays" used for sorting/organizing professor feedback/ratings
+firstNameIndex = 0;
+lastnameIndex = 1;
+departmentIndex = 2
+retakeRatingIndex = 3;
+difficultyIndex = 4;
+comfortableIndex = 5;
+startIndex = 6;
+totalEntriesIndex = 7;
+
+
 function display(html) {
     document.getElementsByTagName("article")[0].innerHTML = html;
 }
