@@ -499,6 +499,33 @@ function sortDataArray(array,sortFn){
   return array
 }
 
+function sortProfs(){
+  let criteria = Number(document.getElementById("sortCriteria").value);
+  if (!showOverview){
+    document.getElementById("overviews").style.visibility = 'visible';
+    document.getElementById("overviews").style.display = 'block';
+
+    document.getElementById("results").style.display = 'none';
+    document.getElementById("results").style.visibility = 'hidden';
+    showOverview = true;
+  }
+  switch (criteria){
+    case 0:
+      displaySummaries(sortDataArray(dataArray,sortDepartment))
+      break;
+    case 1:
+      displaySummaries(sortDataArray(dataArray,sortRetake))
+      break;
+    case 2:
+      displaySummaries(sortDataArray(dataArray,sortDifficulty))
+      break;
+    case 3:
+      displaySummaries(sortDataArray(dataArray,sortComfortable))
+      break;
+    default:
+      document.getElementById("overviews").innerHTML = "If you're seeing this, most likely the webmaster broke something. Sorry!"
+    }
+}
 
 
 function onSearch(){
