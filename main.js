@@ -382,6 +382,47 @@ function toggleProfessor() {
 
   changeActive(document.getElementById("profButton"))
   changePassive(document.getElementById("advisorButton"))
+function generateProfArray(matrix, header, start, total, professor) {
+
+  let profArray = matrix
+
+  let takeIndex = header.indexOf("take again")
+  let diffIndex = header.indexOf("difficulty")
+  let comfIndex = header.indexOf("comfortable")
+
+  takeAgain = 0;
+  difficulty = 0;
+  comfortable = 0;
+
+  let takeNum = 0;
+  let diffNum = 0;
+  let comfNum = 0;
+
+  let i = 0;
+  while (i<total){
+    let curr = profArray[i];
+    if (curr[takeIndex]){
+      takeAgain += Number(curr[takeIndex]);
+      takeNum++;
+    }
+    if (curr[diffIndex]){
+      difficulty += Number(curr[diffIndex])
+      diffNum++;
+    }
+    if (curr[comfIndex]){
+      comfortable += Number(curr[comfIndex])
+      comfNum++;
+    }
+    i++;
+  }
+  takeAgain = takeAgain/(takeNum);
+  difficulty = difficulty/(diffNum);
+  comfortable = comfortable/(comfNum);
+
+  first = profArray[0][header.indexOf("first")];
+  dept = profArray[0][header.indexOf("department")];
+  return [first, professor, dept, takeAgain, difficulty, comfortable, start, total]
+
 }
 
 function toggleAdvisor() {
