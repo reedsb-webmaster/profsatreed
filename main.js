@@ -363,6 +363,14 @@ function getProfIndices(reference, refArray, professor){ //returns an object of 
 function changePassive(passive){
   passive.style.backgroundColor = "white";
   passive.style.color = "black";
+function getDataFromIndices(data, start, total){
+  outData = [];
+  let j = 0;
+  while (j < total){
+    outData.push(createArray(start+ j, data));
+    j++;
+  }
+  return outData;
 }
 
 function toggleProfessor() {
