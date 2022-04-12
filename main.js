@@ -91,6 +91,7 @@ function getNthRow(n, rowData){ //returns the specific row object that you want,
     return out;
   }else{
     return false;
+    return -1;
   }
 }
 
@@ -101,6 +102,7 @@ function getMthColumnData(m, row){//returns the contents of the mth column for a
     return tmp.formattedValue
   }else {
     return false
+    return -1;
   }
 }
 
