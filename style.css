@@ -140,6 +140,21 @@ header form button {
     }
 }
 
+/*styling for the overview screen*/
+
+.overviewItem{
+  background-color:#e3e0da;
+}
+
+.overviewHeader{
+  font-size:1.5em;
+  font-weight:bold;
+  margin-left:3px;
+}
+
+.overviewBody{
+  margin-left:15px;
+}
 
 /*TABLE Styling and CSS*/
 
