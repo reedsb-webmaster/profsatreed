@@ -346,6 +346,18 @@ async function main() {
 function changeActive(active){
   active.style.backgroundColor = "#880404";
   active.style.color = "white";
+function getProfIndices(reference, refArray, professor){ //returns an object of the full rows where "professor" exists, or returns false
+  //find the row(s) where the professor exists
+  refIndex = findColumn(refArray, professor);
+  if (refIndex == -1) {
+    return false;
+  } else {
+    startRow = Number(getNMElement(1, refIndex, reference));    //if we fix the formatting of the index listing on the sheet we don't need this
+    if (startRow >= 1){
+      totRows = Number(getNMElement(2, refIndex, reference));
+    }
+  }
+  return [startRow,totRows];
 }
 
 function changePassive(passive){
