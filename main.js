@@ -161,6 +161,8 @@ function findProfessor(data, reference, refArray, professor){ //returns an objec
   } else {
     startRow = Number(getNMElement(1, refIndex, reference)) + 1;    //if we fix the formatting of the index listing on the sheet we don't need this
     if (startRow){
+    startRow = Number(getNMElement(1, refIndex, reference));    //if we fix the formatting of the index listing on the sheet we don't need this
+    if (startRow >= 0){
       totRows = Number(getNMElement(2, refIndex, reference));
 
       outData = [];
@@ -177,6 +179,7 @@ function findProfessor(data, reference, refArray, professor){ //returns an objec
   }
 
 }
+
 function makeRow(row, nameIndex){
   let i = 0;
   let out = "<tr>";
