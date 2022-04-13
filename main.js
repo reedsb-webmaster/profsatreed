@@ -461,15 +461,6 @@ function sortDifficulty(a,b){
     return 0
   }
 }
-function sortComfortable(a,b){
-  if(a[comfortableIndex] > b[comfortableIndex]){
-    return -1
-  }else if (a[comfortableIndex] < b[comfortableIndex]){
-    return 1
-  }else{
-    return 0
-  }
-}
 function sortDataArray(array,sortFn){
   array.sort(sortFn)
   return array
@@ -545,9 +536,6 @@ function sortProfs(){
       break;
     case 2:
       displaySummaries(sortDataArray(dataArray,sortDifficulty))
-      break;
-    case 3:
-      displaySummaries(sortDataArray(dataArray,sortComfortable))
       break;
     default:
       document.getElementById("overviews").innerHTML = "If you're seeing this, most likely the webmaster broke something. Sorry!"
