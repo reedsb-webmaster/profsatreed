@@ -169,11 +169,11 @@ function findProfessor(data, reference, refArray, professor){ //returns an objec
   }
 }
 
-function makeRow(row, nameIndex){
+function makeRow(row, first, last){
   let i = 0;
   let out = "<tr>";
   while (row[i]){
-    if (i!=nameIndex){
+    if ((i!=first)&&(i!=last)){
       out += "<td>"+row[i]+"</td>";
     }
     i++;
@@ -194,15 +194,19 @@ function makeHeadRow(headerArray){
 }
 
 function displayResults(rowArray, headerArray){
-  let nameIndex = findColumn(headerArray,"Professor Name");
-  let name = rowArray[0][nameIndex];
+  let lastIndex = findColumn(headerArray,"Last");
+  let last = rowArray[0][lastIndex];
+
+  let firstIndex = findColumn(headerArray, "First");
+  let first = rowArray[0][firstIndex];
+  let name = first+" "+last
 
   let output = "<p>Displaying Results for:    " + name+ "</p> <div class=\"table-wrapper\"><table class=\"fl-table\">";
-  output += makeRow(headerArray,nameIndex);
+  output += makeRow(headerArray,first, last);
 
   let n = 0;
   while (n < rowArray.length){
-    output += makeRow(rowArray[n],nameIndex);
+    output += makeRow(rowArray[n],first, last);
     n++
   }
   output += "</table></div>"
