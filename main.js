@@ -509,6 +509,7 @@ function onSearch(){
 
 function searchWithInput(profName){
   name = profName.toLowerCase();
+  toggleProfessor();
   if (name){
     prof = findProfessor(dataResponse,refResponse, refArray, name);
     if (prof){
