@@ -385,7 +385,7 @@ function generateProfArray(matrix, header, start, total, professor) {
   let comfNum = 0;
 
   let i = 0;
-  while (i<total){
+  while (i<matrix.length){
     let curr = profArray[i];
     if (curr[takeIndex]){
       takeAgain += Number(curr[takeIndex]);
@@ -415,7 +415,7 @@ function generateProfArray(matrix, header, start, total, professor) {
 }
 
 function makeMatrix(data){
-  return getDataFromIndices(data, 0, data.length-1)
+  return getDataFromIndices(data, 0, data.length)
 }
 
 
