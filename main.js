@@ -2,9 +2,8 @@
 // All JavaScript goes in here
 //
 
-const professor_form = "https://docs.google.com/forms/d/e/" +
-      "1FAIpQLSe750TrU5eKALR8WIZxF_4sKmpKwEnd77-1fNHCvCoMbkCj-Q" +
-      "/embedded=true"
+const professor_form = "https://docs.google.com/forms/d/e/1FAIpQLScv7Lbdves9tQg0scg9vzlBpMKIPCPoYOdkqnKP5_1AXzyCYA/viewform?embedded=true"
+
 const advisor_form = "https://docs.google.com/forms/d/e/" +
       "1FAIpQLSc60U5LNQFxcrewHO1P6Gk4rpYtlkbYxBl0Q_yseNiBgqQ9zg" +
       "/embedded=true"
