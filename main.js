@@ -8,9 +8,12 @@ const advisor_form = "https://docs.google.com/forms/d/e/" +
       "1FAIpQLSc60U5LNQFxcrewHO1P6Gk4rpYtlkbYxBl0Q_yseNiBgqQ9zg" +
       "/embedded=true"
 
-const professorSheetId = "1lmlJA0cH4x51C1wshULfHPgRRX9vNtgy5NYuCLLsUV0";
-const professorDataRange = "Data!E17:K50";
-const professorRefRange = "Ref!B2:M50";
+
+
+
+const professorSheetId = "1LpamY8qgPm8LNi32fDv2211pnAwEKC5ICOR5y7HwCR0";
+const professorDataRange = "Data!B1:M";
+const professorRefRange = "Ref!B2:N";
 const indexRange = "index!B2:E2";
 
 const advisorSheetId = "1I4xk2bHo6kYdddThQ3wi70egkMzTND40llPcVrEE3Kc";
