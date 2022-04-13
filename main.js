@@ -383,8 +383,10 @@ function generateProfArray(matrix, header, start, total, professor) {
   let i = 0;
   while (i<matrix.length){
     let curr = profArray[i];
-    if (curr[takeIndex]){
-      takeAgain += Number(curr[takeIndex]);
+    if (takeTmp = curr[takeIndex]){
+      if (takeTmp == "Yes"){
+        takeAgain++
+      }
       takeNum++;
     }
     if (curr[diffIndex]){
