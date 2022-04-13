@@ -542,6 +542,17 @@ function sortProfs(){
     }
 }
 
+function showSummaries(){
+  if (!showOverview){
+    document.getElementById("overviews").style.visibility = 'visible';
+    document.getElementById("overviews").style.display = 'block';
+
+    document.getElementById("results").style.display = 'none';
+    document.getElementById("results").style.visibility = 'hidden';
+    showOverview = true;
+  }
+}
+
 
 //functions for button management in results page
 function changeActive(active){
