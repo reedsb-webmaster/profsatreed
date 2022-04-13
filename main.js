@@ -250,9 +250,7 @@ function makeProfOverview(profArray){
   toDisplay += profArray[retakeRatingIndex]
   toDisplay += "  %</div><div class='overviewMember'>Difficulty:  "
   toDisplay += profArray[difficultyIndex]
-  toDisplay += "  /10</div><div class = 'overviewMember'>Comfortable in Class:  "
-  toDisplay += profArray[comfortableIndex]
-  toDisplay += "  %</div></div></div>"
+  toDisplay += "  /10</div></div></div>"
   return toDisplay
 }
 
