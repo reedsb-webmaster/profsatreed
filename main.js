@@ -46,9 +46,8 @@ lastnameIndex = 1;
 departmentIndex = 2
 retakeRatingIndex = 3;
 difficultyIndex = 4;
-comfortableIndex = 5;
-startIndex = 6;
-totalEntriesIndex = 7;
+startIndex = 5;
+totalEntriesIndex = 6;
 
 
 function display(html) {
