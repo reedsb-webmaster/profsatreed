@@ -331,7 +331,6 @@ async function main() {
            document.getElementById("searchButton").click();
           }
         });
-
         dataArray = makeDataArray(profResponse, profRef, profRefArray)
         displaySummaries(dataArray)
 
@@ -406,6 +405,8 @@ function generateProfArray(matrix, header, start, total, professor) {
   difficulty = Math.round(100*difficulty/(diffNum))/100;
   comfortable = Math.round(100*100*comfortable/(comfNum))/100;
 
+
+
   first = profArray[0][header.indexOf("first")];
   dept = profArray[0][header.indexOf("department")];
   professor = profArray[0][header.indexOf("Professor Name")]
@@ -429,7 +430,6 @@ function makeDataArray(dataResponse, refResponse, refArray){
       var totalIndex = Number(getNMElement(2,i,refResponse))
       if (totalIndex >= 0){
         var useMatrix = matrix.slice(startIndex,(startIndex + totalIndex))
-        //console.log(useMatrix)
         profDataArray.push(generateProfArray(useMatrix, header, startIndex, totalIndex, refArray[i]));
       }
     }
@@ -483,11 +483,10 @@ function onSearch(){
   if (isset) {
     var name = document.getElementById("searchBox");
     name = name.value;
-    name = name.toLowerCase();
+    //name = name.toLowerCase();
     if (name){
       prof = findProfessor(dataResponse,refResponse, refArray, name);
       if (prof){
-        console.log(document.getElementById("overviews").style.display)
         if (showOverview){
           document.getElementById("overviews").style.display = 'none';
           document.getElementById("overviews").style.visibility = 'hidden';
