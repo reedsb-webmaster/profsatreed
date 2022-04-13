@@ -376,11 +376,9 @@ function generateProfArray(matrix, header, start, total, professor) {
 
   takeAgain = 0;
   difficulty = 0;
-  comfortable = 0;
 
   let takeNum = 0;
   let diffNum = 0;
-  let comfNum = 0;
 
   let i = 0;
   while (i<matrix.length){
@@ -393,16 +391,10 @@ function generateProfArray(matrix, header, start, total, professor) {
       difficulty += Number(curr[diffIndex])
       diffNum++;
     }
-    if (curr[comfIndex]){
-      comfortable += Number(curr[comfIndex])
-      comfNum++;
-    }
     i++;
   }
   takeAgain = Math.round(100*100*takeAgain/(takeNum))/100;
   difficulty = Math.round(100*difficulty/(diffNum))/100;
-  comfortable = Math.round(100*100*comfortable/(comfNum))/100;
-
 
 
   first = profArray[0][header.indexOf("first")];
