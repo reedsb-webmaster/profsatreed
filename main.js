@@ -146,7 +146,7 @@ function findColumn(arr, title){
 
 function findProfessor(data, reference, refArray, professor){ //returns an object of the full rows where "professor" exists, or returns false
   //find the row(s) where the professor exists
-  refIndex = findColumn(refArray, professor);
+  refIndex = findColumn(refArray, professor.toLowerCase());
   if (refIndex == -1) {
     return false;
   } else {
@@ -225,11 +225,25 @@ function displayFail(which,name){
 }
 
 function makeProfOverview(profArray){
-  toDisplay = "<div class='overviewItem'><div class='overviewHeader'>";
+  toDisplay = "<div class='overviewItem'>"
+
+  toDisplay += "<div class='overviewHeader'>"
+  toDisplay += "<button onclick=searchWithInput(\x22"
+  toDisplay += profArray[lastnameIndex]
+  toDisplay += "\x22)>";
   toDisplay += profArray[firstNameIndex]
   toDisplay += " "
   toDisplay += profArray[lastnameIndex]
-  toDisplay += "</div><div class='overviewBody'><div class='overviewMember'>Department:  "
+  toDisplay += "</button></div>"
+
+  toDisplay += "<div class='overviewPicture'>"
+  toDisplay += "<img class=\x22profPicture\x22 src=\x22 https://www.reed.edu/faculty-profiles/profiles/photos/"
+  toDisplay += profArray[lastnameIndex]
+  toDisplay += "-"
+  toDisplay += profArray[firstNameIndex]
+  toDisplay += ".jpg \x22></img></div>"
+
+  toDisplay += "<div class='overviewBody'><div class='overviewMember'>Department:  "
   toDisplay += profArray[departmentIndex]
   toDisplay += "</div><div class='overviewMember'>Take Again:  "
   toDisplay += profArray[retakeRatingIndex]
@@ -394,6 +408,7 @@ function generateProfArray(matrix, header, start, total, professor) {
 
   first = profArray[0][header.indexOf("first")];
   dept = profArray[0][header.indexOf("department")];
+  professor = profArray[0][header.indexOf("Professor Name")]
   return [first, professor, dept, takeAgain, difficulty, comfortable, start, total]
 
 }
