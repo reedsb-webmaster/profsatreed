@@ -397,10 +397,10 @@ function generateProfArray(matrix, header, start, total, professor) {
   difficulty = Math.round(100*difficulty/(diffNum))/100;
 
 
-  first = profArray[0][header.indexOf("first")];
-  dept = profArray[0][header.indexOf("department")];
-  professor = profArray[0][header.indexOf("Professor Name")]
-  return [first, professor, dept, takeAgain, difficulty, comfortable, start, total]
+  first = profArray[0][header.indexOf("First")];
+  dept = profArray[0][header.indexOf("Department")];
+  last = profArray[0][header.indexOf("Last")]
+  return [first, last, dept, takeAgain, difficulty, start, total]
 
 }
 
