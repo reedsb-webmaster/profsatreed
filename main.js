@@ -371,9 +371,8 @@ function generateProfArray(matrix, header, start, total, professor) {
 
   let profArray = matrix
 
-  let takeIndex = header.indexOf("take again")
-  let diffIndex = header.indexOf("difficulty")
-  let comfIndex = header.indexOf("comfortable")
+  let takeIndex = header.indexOf("Retake")
+  let diffIndex = header.indexOf("Difficulty")
 
   takeAgain = 0;
   difficulty = 0;
