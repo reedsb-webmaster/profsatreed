@@ -508,6 +508,28 @@ function onSearch(){
   }
 }
 
+function searchWithInput(profName){
+  name = profName.toLowerCase();
+  if (name){
+    prof = findProfessor(dataResponse,refResponse, refArray, name);
+    if (prof){
+      if (showOverview){
+        document.getElementById("overviews").style.display = 'none';
+        document.getElementById("overviews").style.visibility = 'hidden';
+
+        document.getElementById("results").style.visibility = 'visible';
+        document.getElementById("results").style.display = 'block';
+        showOverview = false;
+      }
+      displayResults(prof,headerArray);
+    }else {
+      displayFail("prof",name);
+    }
+  }else{
+    displayFail("name",name);
+  }
+}
+
 function sortProfs(){
   let criteria = Number(document.getElementById("sortCriteria").value);
   if (!showOverview){
