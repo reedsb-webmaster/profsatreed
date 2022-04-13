@@ -144,16 +144,27 @@ header form button {
 
 .overviewItem{
   background-color:#e3e0da;
+  display:flex;
 }
 
 .overviewHeader{
   font-size:1.5em;
   font-weight:bold;
   margin-left:3px;
+  flex:1;
 }
 
 .overviewBody{
   margin-left:15px;
+  flex:4;
+}
+
+.overviewPicture{
+  flex:1;
+}
+.profPicture{
+  max-width:100px;
+  max-height:100px;
 }
 
 /*TABLE Styling and CSS*/
