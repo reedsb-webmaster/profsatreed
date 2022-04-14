@@ -420,7 +420,7 @@ function makeRefMatrix(refData){
 
 function makeDataArray(dataResponse, refResponse, refArray){
   profDataArray = [];
-  let matrix = makeMatrix(dataResponse)
+  let matrix = profMatrixUse
   let header = matrix[0]
   let i = 1;
   while (i < refArray.length) {
