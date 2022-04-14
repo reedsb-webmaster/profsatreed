@@ -323,6 +323,7 @@ async function main() {
         profRefMatrix.freeze
         dataArray = makeDataArray(profResponse, profRef, profRefArray)
         displaySummaries(dataArray)
+        fillDropDownMenu();
 
         break;
     case "search.html":
