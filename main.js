@@ -39,6 +39,10 @@ var isset = false; //single bit/binary to determine if either of the buttons hav
 var showOverview = true;
 
 var profDataArray;
+var profMatrix;
+var profMatrixUse
+var profRefMatrix;
+var currentReviews;
 
 //for the "arrays" used for sorting/organizing professor feedback/ratings
 firstNameIndex = 0;
