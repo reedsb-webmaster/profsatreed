@@ -8,9 +8,6 @@ const advisor_form = "https://docs.google.com/forms/d/e/" +
       "1FAIpQLSc60U5LNQFxcrewHO1P6Gk4rpYtlkbYxBl0Q_yseNiBgqQ9zg" +
       "/embedded=true"
 
-
-
-
 const professorSheetId = "1LpamY8qgPm8LNi32fDv2211pnAwEKC5ICOR5y7HwCR0";
 const professorDataRange = "Data!B1:M";
 const professorRefRange = "Ref!B2:N";
@@ -250,7 +247,7 @@ function makeProfOverview(profArray){
   toDisplay += profArray[lastnameIndex]
   toDisplay += "-"
   toDisplay += profArray[firstNameIndex]
-  toDisplay += ".jpg \x22></img></div>"
+  toDisplay += ".jpg\x22</img></div>"
 
   toDisplay += "<div class='overviewBody'><div class='overviewMember'>Department:  "
   toDisplay += profArray[departmentIndex]
