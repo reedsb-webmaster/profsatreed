@@ -469,6 +469,7 @@ function sortDataArray(array,sortFn){
   return array
 }
 
+/*
 function onSearch(){
   if (isset) {
     var name = document.getElementById("searchBox");
@@ -486,6 +487,38 @@ function onSearch(){
           showOverview = false;
         }
         displayResults(prof,headerArray);
+      }else {
+        displayFail("prof",name);
+      }
+    }else{
+      displayFail("name",name);
+    }
+  }else{
+    displayFail("button","no")
+  }
+}
+*/
+
+function onSearch(){
+  if (isset) {
+    var name = document.getElementById("searchBox");
+    name = name.value
+    name = name.toLowerCase();
+    if (name){
+      let arrayIndex = profRefMatrix[0].indexOf(name)
+      if (arrayIndex >= 0){
+        if (showOverview){
+          document.getElementById("overviews").style.display = 'none';
+          document.getElementById("overviews").style.visibility = 'hidden';
+
+          document.getElementById("results").style.visibility = 'visible';
+          document.getElementById("results").style.display = 'block';
+          showOverview = false;
+        }
+        let startIndex = Number(profRefMatrix[1][arrayIndex])
+        let total = Number(profRefMatrix[2][arrayIndex])
+        currentReviews = profMatrix.slice(startIndex,startIndex+total)
+        displayResults(currentReviews,profMatrix[0])
       }else {
         displayFail("prof",name);
       }
