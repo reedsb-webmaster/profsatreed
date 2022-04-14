@@ -407,11 +407,14 @@ function generateProfArray(matrix, header, start, total, professor) {
   dept = profArray[0][header.indexOf("Department")];
   last = profArray[0][header.indexOf("Last")]
   return [first, last, dept, takeAgain, difficulty, start, total]
-
 }
 
 function makeMatrix(data){
   return getDataFromIndices(data, 0, data.length)
+}
+
+function makeRefMatrix(refData){
+  return getDataFromIndices(refData, 0, 3)
 }
 
 
