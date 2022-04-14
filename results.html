@@ -28,7 +28,17 @@
       <p>
         Professor Name: <input id="searchBox">
       </p>
-      <button class="main-button" id="searchButton" onclick="onSearch()">Search</button>
+      <div style="display:flex">
+        <button class="main-button" id="searchButton" onclick="onSearch()">Search</button>
+        <form>
+          <select id="reviewSort" onchange="sortReviews()">
+            <div id="dropdownMenu">
+              <!-- FILL THIS IN JAVASCRIPT -->
+            </div>
+          </select>
+        </form>
+    </div>
+
       <div class="dropdown">
         <p>
           Sort Professors By:
