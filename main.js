@@ -589,6 +589,17 @@ function showSummaries(){
   }
 }
 
+function genericReviewSorterMaker(index){
+  return function sort(a,b){
+    if(a[index] > b[index]){
+      return -1
+    }else if (a[index] < b[index]){
+      return 1
+    }else{
+      return 0
+    }
+  }
+}
 
 //functions for button management in results page
 function changeActive(active){
