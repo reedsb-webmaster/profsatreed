@@ -316,6 +316,11 @@ async function main() {
            document.getElementById("searchButton").click();
           }
         });
+        profMatrix = makeMatrix(profResponse)
+        profMatrixUse = profMatrix
+        profMatrix.freeze
+        profRefMatrix = makeRefMatrix(profRef)
+        profRefMatrix.freeze
         dataArray = makeDataArray(profResponse, profRef, profRefArray)
         displaySummaries(dataArray)
 
