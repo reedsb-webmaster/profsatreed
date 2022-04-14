@@ -194,7 +194,7 @@ function makeHeadRow(headerArray){
   return out;
 }
 
-function displayResults(rowArray, headerArray){
+function displayResults(rowArray, headerArray, summary){
   let lastIndex = findColumn(headerArray,"Last");
   let last = rowArray[0][lastIndex];
 
@@ -202,7 +202,8 @@ function displayResults(rowArray, headerArray){
   let first = rowArray[0][firstIndex];
   let name = first+" "+last
 
-  let output = "<p>Displaying Results for:    " + name+ "</p> <div class=\"table-wrapper\"><table class=\"fl-table\">";
+  let output = makeProfOverview(summary)
+  output+= "<p>Displaying Results for:    " + name+ "</p> <div class=\"table-wrapper\"><table class=\"fl-table\">";
   output += makeRow(headerArray,first, last);
 
   let n = 0;
@@ -468,75 +469,6 @@ function sortDataArray(array,sortFn){
   array.sort(sortFn)
   return array
 }
-
-/*
-function onSearch(){
-  if (isset) {
-    var name = document.getElementById("searchBox");
-    name = name.value;
-    //name = name.toLowerCase();
-    if (name){
-      prof = findProfessor(dataResponse,refResponse, refArray, name);
-      if (prof){
-        if (showOverview){
-          document.getElementById("overviews").style.display = 'none';
-          document.getElementById("overviews").style.visibility = 'hidden';
-
-          document.getElementById("results").style.visibility = 'visible';
-          document.getElementById("results").style.display = 'block';
-          showOverview = false;
-        }
-        displayResults(prof,headerArray);
-      }else {
-        displayFail("prof",name);
-      }
-    }else{
-      displayFail("name",name);
-    }
-  }else{
-    displayFail("button","no")
-  }
-}
-*/
-
-function onSearch(){
-  if (isset) {
-    var name = document.getElementById("searchBox");
-    name = name.value
-    name = name.toLowerCase();
-    if (name){
-      let arrayIndex = profRefMatrix[0].indexOf(name)
-      if (arrayIndex >= 0){
-        if (showOverview){
-          document.getElementById("overviews").style.display = 'none';
-          document.getElementById("overviews").style.visibility = 'hidden';
-
-          document.getElementById("results").style.visibility = 'visible';
-          document.getElementById("results").style.display = 'block';
-          showOverview = false;
-        }
-        let startIndex = Number(profRefMatrix[1][arrayIndex])
-        let total = Number(profRefMatrix[2][arrayIndex])
-        currentReviews = profMatrix.slice(startIndex,startIndex+total)
-        displayResults(currentReviews,profMatrix[0])
-      }else {
-        displayFail("prof",name);
-      }
-    }else{
-      displayFail("name",name);
-    }
-  }else{
-    displayFail("button","no")
-  }
-}
-
-function searchWithInput(profName){
-  name = profName.toLowerCase();
-  toggleProfessor();
-  document.getElementById("searchBox").value = name;
-  onSearch();
-}
-
 function sortProfs(){
   let criteria = Number(document.getElementById("sortCriteria").value);
   if (!showOverview){
@@ -562,6 +494,26 @@ function sortProfs(){
     }
 }
 
+function findProfIndex(name){
+  let i = 0;
+  while (i<dataArray.length){
+    if (name == dataArray[i][lastnameIndex].toLowerCase()){
+      return  i;
+    }
+    i++;
+  }
+  return -1
+}
+
+function findProfSummary(name){
+  let index = findProfIndex(name);
+  if (index != -1){
+    return dataArray[index]
+  }else{
+    return -1;
+  }
+}
+
 function showSummaries(){
   if (!showOverview){
     document.getElementById("overviews").style.visibility = 'visible';
@@ -571,6 +523,46 @@ function showSummaries(){
     document.getElementById("results").style.visibility = 'hidden';
     showOverview = true;
   }
+}
+
+function onSearch(){
+  if (isset) {
+    var name = document.getElementById("searchBox");
+    name = name.value
+    name = name.toLowerCase();
+    if (name){
+      let arrayIndex = profRefMatrix[0].indexOf(name)
+      if (arrayIndex >= 0){
+        if (showOverview){
+          document.getElementById("overviews").style.display = 'none';
+          document.getElementById("overviews").style.visibility = 'hidden';
+
+          document.getElementById("results").style.visibility = 'visible';
+          document.getElementById("results").style.display = 'block';
+          showOverview = false;
+        }
+        let startIndex = Number(profRefMatrix[1][arrayIndex])
+        let total = Number(profRefMatrix[2][arrayIndex])
+        currentReviews = profMatrix.slice(startIndex,startIndex+total)
+        overview = findProfSummary(name.toLowerCase())
+        console.log(overview)
+        displayResults(currentReviews,profMatrix[0],overview)
+      }else {
+        displayFail("prof",name);
+      }
+    }else{
+      displayFail("name",name);
+    }
+  }else{
+    displayFail("button","no")
+  }
+}
+
+function searchWithInput(profName){
+  name = profName.toLowerCase();
+  toggleProfessor();
+  document.getElementById("searchBox").value = name;
+  onSearch();
 }
 
 function genericReviewSorterMaker(index){
@@ -588,6 +580,7 @@ function genericReviewSorterMaker(index){
 function sortReviews(){
   if (currentReviews){
     let sorter = genericReviewSorterMaker(Number(document.getElementById("reviewSort").value))
+    overview = findProfSummary(document.getElementById("searchBox").value.toLowerCase())
     displayResults(sortDataArray(currentReviews,sorter),profMatrix[0])
   }
 }
