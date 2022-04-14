@@ -601,6 +601,14 @@ function genericReviewSorterMaker(index){
   }
 }
 
+function sortReviews(){
+  if (currentReviews){
+    let sorter = genericReviewSorterMaker(Number(document.getElementById("reviewSort").value))
+    displayResults(sortDataArray(currentReviews,sorter),profMatrix[0])
+  }
+}
+
+
 //functions for button management in results page
 function changeActive(active){
   active.style.backgroundColor = "#880404";
