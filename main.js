@@ -334,6 +334,18 @@ async function main() {
     }
 }
 
+function fillDropDownMenu(){
+  let header = profMatrix[0];
+  let outWrite = ""
+  outWrite += "<option value=5 selected=/x22selected/x22>"+header[5]+"</option>"
+  let i = 6;
+  while (i < header.length){
+    outWrite += "<option value="+i+">"+header[i]+"</option>"
+    i++
+  }
+  document.getElementById("reviewSort").innerHTML = outWrite;
+}
+
 function getProfIndices(reference, refArray, professor){ //returns an object of the full rows where "professor" exists, or returns false
   //find the row(s) where the professor exists
   refIndex = findColumn(refArray, professor);
