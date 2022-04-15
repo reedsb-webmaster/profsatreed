@@ -507,7 +507,7 @@ function sortProfs(){
     showOverview = true;
   }
   let reverse;
-  if (document.getElementById("reverseSort").checked == true){
+  if (document.getElementById("reverseSummaries").checked == true){
     reverse = true;
   }else{
     reverse = false;
@@ -609,7 +609,18 @@ function searchWithInput(profName){
   onSearch();
 }
 
-function genericReviewSorterMaker(index){
+function genericReviewSorterMaker(index,reverse){
+  if (reverse){
+    return function sort(a,b){
+      if(a[index] < b[index]){
+        return -1
+      }else if (a[index] > b[index]){
+        return 1
+      }else{
+        return 0
+      }
+    }
+  } else{
   return function sort(a,b){
     if(a[index] > b[index]){
       return -1
