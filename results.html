@@ -28,8 +28,7 @@
       <p>
         Professor Name: <input id="searchBox">
       </p>
-      <div style="display:flex">
-        <button class="main-button" id="searchButton" onclick="onSearch()">Search</button>
+      <div style="display:flex;align-items:center">
         <form>
           <select id="reviewSort" onchange="sortReviews()">
             <div id="dropdownMenu">
@@ -37,6 +36,11 @@
             </div>
           </select>
         </form>
+        <p style="padding-left:15px;padding-right:15px">
+          Reverse sort order?
+        </p>
+        <input type="checkbox" id="reverseReviews" style="margin-right:15px;" onclick="sortReviews()"/>
+        <button class="main-button" id="searchButton" onclick="onSearch()">Search</button>
     </div>
 
       <div class="dropdown">
@@ -60,7 +64,7 @@
           <p style="padding-right:15px;">
             Reverse sort order?
           </p>
-          <input type="checkbox" id="reverseSort" onclick="sortProfs()"/>
+          <input type="checkbox" id="reverseSummaries" onclick="sortProfs()"/>
         </div>
       </div>
       <button class="main-button" onclick="showSummaries()">Show All Professors</button>
