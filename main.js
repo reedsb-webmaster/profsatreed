@@ -203,7 +203,7 @@ function displayResults(rowArray, headerArray, summary){
   let name = first+" "+last
 
   let output = makeProfOverview(summary)
-  output+= "<p>Displaying Results for:    " + name+ "</p> <div class=\"table-wrapper\"><table class=\"fl-table\">";
+  output+= "<div class=\"table-wrapper\"><table class=\"fl-table\">";
   output += makeRow(headerArray,first, last);
 
   let n = 0;
