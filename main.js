@@ -447,6 +447,15 @@ function sortDepartment(a,b){
     return 0
   }
 }
+function sortDepartmentReverse(a,b){
+  if(a[departmentIndex] < b[departmentIndex]){
+    return -1
+  }else if (a[departmentIndex] > b[departmentIndex]){
+    return 1
+  }else{
+    return 0
+  }
+}
 function sortRetake(a,b){
   if(a[retakeRatingIndex] > b[retakeRatingIndex]){
     return -1
@@ -456,10 +465,28 @@ function sortRetake(a,b){
     return 0
   }
 }
+function sortRetakeReverse(a,b){
+  if(a[retakeRatingIndex] < b[retakeRatingIndex]){
+    return -1
+  }else if (a[retakeRatingIndex] > b[retakeRatingIndex]){
+    return 1
+  }else{
+    return 0
+  }
+}
 function sortDifficulty(a,b){
   if(a[difficultyIndex] > b[difficultyIndex]){
     return -1
   }else if (a[difficultyIndex] < b[difficultyIndex]){
+    return 1
+  }else{
+    return 0
+  }
+}
+function sortDifficultyReverse(a,b){
+  if(a[difficultyIndex] < b[difficultyIndex]){
+    return -1
+  }else if (a[difficultyIndex] > b[difficultyIndex]){
     return 1
   }else{
     return 0
@@ -479,15 +506,33 @@ function sortProfs(){
     document.getElementById("results").style.visibility = 'hidden';
     showOverview = true;
   }
+  let reverse;
+  if (document.getElementById("reverseSort").checked == true){
+    reverse = true;
+  }else{
+    reverse = false;
+  }
   switch (criteria){
     case 0:
-      displaySummaries(sortDataArray(dataArray,sortDepartment))
+      if (reverse){
+        displaySummaries(sortDataArray(dataArray,sortDepartmentReverse))
+      }else{
+        displaySummaries(sortDataArray(dataArray,sortDepartment))
+      }
       break;
     case 1:
-      displaySummaries(sortDataArray(dataArray,sortRetake))
+      if (reverse){
+        displaySummaries(sortDataArray(dataArray,sortRetakeReverse))
+      }else{
+        displaySummaries(sortDataArray(dataArray, sortRetake))
+      }
       break;
     case 2:
-      displaySummaries(sortDataArray(dataArray,sortDifficulty))
+      if (reverse){
+        displaySummaries(sortDataArray(dataArray,sortDifficultyReverse))
+      }else{
+        displaySummaries(sortDataArray(dataArray, sortDifficulty))
+      }
       break;
     default:
       document.getElementById("overviews").innerHTML = "If you're seeing this, most likely the webmaster broke something. Sorry!"
