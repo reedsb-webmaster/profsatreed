@@ -545,7 +545,6 @@ function onSearch(){
         let total = Number(profRefMatrix[2][arrayIndex])
         currentReviews = profMatrix.slice(startIndex,startIndex+total)
         overview = findProfSummary(name.toLowerCase())
-        console.log(overview)
         displayResults(currentReviews,profMatrix[0],overview)
       }else {
         displayFail("prof",name);
