@@ -323,7 +323,7 @@ async function main() {
         profRefMatrix = makeRefMatrix(profRef)
         profRefMatrix.freeze
         dataArray = makeDataArray(profResponse, profRef, profRefArray)
-        displaySummaries(dataArray)
+        sortProfs()
         fillDropDownMenu();
 
         break;
