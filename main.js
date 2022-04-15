@@ -631,12 +631,14 @@ function genericReviewSorterMaker(index,reverse){
     }
   }
 }
+}
 
 function sortReviews(){
   if (currentReviews){
-    let sorter = genericReviewSorterMaker(Number(document.getElementById("reviewSort").value))
+    let reverse = document.getElementById("reverseReviews").checked
+    let sorter = genericReviewSorterMaker(Number(document.getElementById("reviewSort").value), reverse)
     overview = findProfSummary(document.getElementById("searchBox").value.toLowerCase())
-    displayResults(sortDataArray(currentReviews,sorter),profMatrix[0])
+    displayResults(sortDataArray(currentReviews,sorter),profMatrix[0],overview)
   }
 }
 
