@@ -331,7 +331,7 @@ async function main() {
         display("Display search results");
         break;
     default:
-        display("If you're seeing this the webmaster broke something. "+window.location.href)
+        display("If you're seeing this the webmaster broke something. "+window.location.href.split("/"))
     }
 }
 
