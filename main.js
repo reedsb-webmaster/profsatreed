@@ -278,7 +278,7 @@ function displaySummaries(array){
 // we source Google's sheets SDK in order to set up the client session then
 // fill in site content.
 async function main() {
-    switch (window.location.href.split("/")[4]) {
+    switch (window.location.href.split("/")[2]) {
     case "":
     case "index.html":
         // This here code is an ugly attempt at extracting the json from
@@ -331,7 +331,7 @@ async function main() {
         display("Display search results");
         break;
     default:
-        display("If you're seeing this the webmaster broke something")
+        display("If you're seeing this the webmaster broke something. "+window.location.href)
     }
 }
 
