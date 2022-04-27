@@ -505,10 +505,28 @@ function generateProfArray(matrix, header, start, total, professor) {
       difficulty += Number(curr[diffIndex])
       diffNum++;
     }
+    let j = 0;
+    while (j<tagNames.length){
+      if (curr[tagIndexes[j]]>0){
+        tagValues[j] += Number(curr[tagIndexes[j]])
+        tagNums[j]++
+      }
+      j++
+    }
     i++;
   }
   takeAgain = Math.round(100*100*takeAgain/(takeNum))/100;
   difficulty = Math.round(100*difficulty/(diffNum))/100;
+
+  let k = 0;
+  while (k<tagNames.length){
+    if (tagNums[k] > 0){
+      tagValues[k] = Math.round(100*tagValues[k]/(tagNums[k]))/100
+    }else{
+      tagValues[k] = 0;
+    }
+    k++;
+  }
 
 
   first = profArray[0][header.indexOf("First")];
