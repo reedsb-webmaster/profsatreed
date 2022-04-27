@@ -771,7 +771,7 @@ function sortReviews(){
 
 //functions for button management in results page
 function changeActive(active){
-  active.style.backgroundColor = "#880404";
+  active.style.backgroundColor = "var(--btn-hover)";
   active.style.color = "white";
 }
 
