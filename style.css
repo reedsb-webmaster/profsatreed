@@ -1,16 +1,37 @@
 
 /* Generic styling */
 
+:root{
+  --main-pg-bg:#ffdfdf;
+  --nav-bar-bg:#066060;
+  --nav-bar-txt:#ddd;
+  --title:#D94e4e;
+  --btn-hover:#066060;
+  --main-btn-color:white;
+  --summary-bg:#fff2f2;
+  --review-bg:#fff2f2;
+}
+
 body {
     margin: 2em auto;
     /*max-width: 40rem;*/
-    max-width:75%;
+    /*max-width:75%;*/
+    width:75%;
     color: #454545;
     font-family: arial;
 }
 
+.body-div {
+  background-color:var(--main-pg-bg);
+  box-sizing: border-box;
+  padding:15px;
+  border-radius:15px;
+}
+
+.main, a, body, .main-button { font-family: Georgia, Times, "Times New Roman", serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.399999618530273px; } h3 { font-family: Georgia, Times, "Times New Roman", serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.399999618530273px; } p { font-family: Georgia, Times, "Times New Roman", serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; } blockquote { font-family: Georgia, Times, "Times New Roman", serif; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } pre { font-family: Georgia, Times, "Times New Roman", serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.571430206298828px; }
+
 a {
-    color: #880404;
+    color: var(--title);
 }
 
 /* Style the embedded Google Forms */
@@ -29,7 +50,6 @@ article {
 
 header a {
     text-decoration: none;
-    font-size:
 }
 
 header #title {
@@ -46,7 +66,7 @@ header #page-title {
 /* Style the navigation bar */
 
 header nav {
-    background-color: #880404;
+    background-color: var(--nav-bar-bg);
     margin: -1em 0em 0em 0em;
     padding: 6px;
     height:3em;
@@ -56,10 +76,12 @@ header nav {
 }
 
 header nav a {
-    color: #ddd;
+    color: var(--nav-bar-txt);
     padding: 3px 16px 3px 3px;
-    font-size:1.15em;
+    font-size:.75em;
     transition:transform .2s;
+    font-family: lora, serif;
+    margin-right:15px;
 }
 
 header nav a:hover {
@@ -97,7 +119,7 @@ header form button {
 .main-button {
   border-radius:25px;
   max-width:1000px;
-  background-color:white;
+  background-color:var(--main-btn-color);
   box-shadow:none;
   border-color:#454545;
   border-width:1px;
@@ -106,8 +128,30 @@ header form button {
 }
 
 #searchButton:hover {
-  background-color:#880404;
+  background-color:var(--btn-hover);
   color:white;
+}
+
+
+/* Styling for Review boxes */
+
+.reviewDiv{
+  padding-top:10px;
+  background-color:var(--review-bg);
+  box-sizing: border-box;
+  padding:15px;
+  border-radius:15px;
+}
+
+.reviewHeader{
+  display:flex;
+}
+
+.rhe {
+  margin-left:15px;
+}
+
+.reviewBody{
 }
 
 /* Override styling for smaller screens */
@@ -143,8 +187,11 @@ header form button {
 /*styling for the overview screen*/
 
 .overviewItem{
-  background-color:#e3e0da;
+  background-color:var(--summary-bg);
   display:flex;
+  box-sizing: border-box;
+  padding:15px;
+  border-radius:15px;
 }
 
 .overviewHeader{
@@ -152,6 +199,7 @@ header form button {
   font-weight:bold;
   margin-left:3px;
   flex:1;
+  font-family: lora, serif;
 }
 
 .overviewBody{
@@ -165,6 +213,9 @@ header form button {
 .profPicture{
   max-width:100px;
   max-height:100px;
+}
+.overviewMember{
+  font-size: .6em;
 }
 
 /*TABLE Styling and CSS*/
