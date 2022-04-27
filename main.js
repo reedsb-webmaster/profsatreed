@@ -250,15 +250,17 @@ function displayResults(rowArray, headerArray, summary){
   let name = first+" "+last
 
   let output = makeProfOverview(summary)
-  output+= "<div class=\"table-wrapper\"><table class=\"fl-table\">";
-  output += makeRow(headerArray,first, last);
+  //output+= "<div class=\"table-wrapper\"><table class=\"fl-table\">";
+  output += "<hr><div>"
+  //output += makeHeadRow(headerArray);
 
   let n = 0;
   while (n < rowArray.length){
-    output += makeRow(rowArray[n],first, last);
+    output += makeRow(rowArray[n],headerArray);
+    output += "<hr>"
     n++
   }
-  output += "</table></div>"
+  output += "</div>"
   document.getElementById("results").innerHTML = output;
 }
 
