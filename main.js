@@ -284,7 +284,7 @@ function makeProfOverview(profArray){
   toDisplay = "<div class='overviewItem'>"
 
   toDisplay += "<div class='overviewHeader'>"
-  toDisplay += "<button onclick=searchWithInput(\x22"
+  toDisplay += "<button class='main-button' onclick=searchWithInput(\x22"
   toDisplay += profArray[lastnameIndex]
   toDisplay += "\x22)>";
   toDisplay += profArray[firstNameIndex]
