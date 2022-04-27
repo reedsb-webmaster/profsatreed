@@ -373,7 +373,6 @@ async function main() {
         r.style.setProperty('--review-bg', getMthColumnData(7,colorRow))
         break;
     case "professor_feedback.html":
-        display("<iframe src='" + professor_form + "'>loading...<iframe>")
         display("<a href='"+short_professor_form+"'>Click here if you don't see the form</a>"
         +"<iframe src='" + professor_form + "'>Loading...<iframe>")
         colors = await fetchIt(colorRange, professorSheetId);
@@ -474,17 +473,24 @@ function getDataFromIndices(data, start, total){
 
 
 function generateProfArray(matrix, header, start, total, professor) {
-
   let profArray = matrix
 
   let takeIndex = header.indexOf("Retake")
   let diffIndex = header.indexOf("Difficulty")
-
   takeAgain = 0;
+  let takeNum = 0
   difficulty = 0;
-
-  let takeNum = 0;
   let diffNum = 0;
+
+  let tagIndexes = new Array(tagNames.length).fill(0);
+  let n = 0;
+  while (n<tagNames.length){
+    tagIndexes[n] = header.indexOf(tagNames[n])
+    n++;
+  }
+  tagValues = new Array(tagNames.length).fill(0)
+  tagNums = new Array(tagNames.length).fill(0)
+
 
   let i = 0;
   while (i<matrix.length){
