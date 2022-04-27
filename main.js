@@ -2,16 +2,19 @@
 // All JavaScript goes in here
 //
 
-const professor_form = "https://docs.google.com/forms/d/e/1FAIpQLScv7Lbdves9tQg0scg9vzlBpMKIPCPoYOdkqnKP5_1AXzyCYA/viewform?embedded=true"
+const professor_form = "https://docs.google.com/forms/d/e/1FAIpQLSfgfaogSRb2fpxN6UwELg5xWRwCYDup1rv6BHF_Rla3Hizd8w/viewform?embedded=true"
+
+const short_professor_form = "https://forms.gle/FyREV8CzBQMwnhNH6"
 
 const advisor_form = "https://docs.google.com/forms/d/e/" +
       "1FAIpQLSc60U5LNQFxcrewHO1P6Gk4rpYtlkbYxBl0Q_yseNiBgqQ9zg" +
       "/embedded=true"
 
-const professorSheetId = "1LpamY8qgPm8LNi32fDv2211pnAwEKC5ICOR5y7HwCR0";
-const professorDataRange = "Data!B1:M";
-const professorRefRange = "Ref!B2:N";
-const indexRange = "index!B2:E2";
+const professorSheetId = "1N4_AMOYhNMGUgvm4CQSHIp68VWh1L418gH5N0SslQaY";
+const professorDataRange = "Data!B1:Q";
+const professorRefRange = "Ref!B2:K";
+const indexRange = "Index!B2:E2";
+const colorRange = "Colors!B2:I2"
 
 const advisorSheetId = "1I4xk2bHo6kYdddThQ3wi70egkMzTND40llPcVrEE3Kc";
 const advisorDataRange = "Data!A1:D50";
