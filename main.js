@@ -299,13 +299,17 @@ function makeProfOverview(profArray){
   toDisplay += profArray[firstNameIndex]
   toDisplay += ".jpg\x22</img></div>"
 
-  toDisplay += "<div class='overviewBody'><div class='overviewMember'>Department:  "
-  toDisplay += profArray[departmentIndex]
-  toDisplay += "</div><div class='overviewMember'>Take Again:  "
-  toDisplay += profArray[retakeRatingIndex]
-  toDisplay += "  %</div><div class='overviewMember'>Difficulty:  "
-  toDisplay += profArray[difficultyIndex]
-  toDisplay += "  /10</div></div></div>"
+  toDisplay += "<div class='overviewBody'><div class='overviewMember'>Department:  "+profArray[departmentIndex]+"</div>"
+  toDisplay += "<div class='overviewMember'>Take Again:  "+profArray[retakeRatingIndex] +"  %</div>"
+  toDisplay += "<div class='overviewMember'>Difficulty:  " +profArray[difficultyIndex]+ "  /10</div>"
+  let i = 0;
+  while (i<tagNames.length){
+    if (profArray[tagStartIndex+i]){
+      toDisplay += "<div class='overviewMember'>"+tagNames[i]+":  "+profArray[tagStartIndex+i]+"  /10</div>"
+    }
+    i++
+  }
+  toDisplay += "</div></div>"
   return toDisplay
 }
 
