@@ -532,7 +532,8 @@ function generateProfArray(matrix, header, start, total, professor) {
   first = profArray[0][header.indexOf("First")];
   dept = profArray[0][header.indexOf("Department")];
   last = profArray[0][header.indexOf("Last")]
-  return [first, last, dept, takeAgain, difficulty, start, total]
+  returnArray = [first, last, dept, takeAgain, difficulty]
+  return returnArray.concat(tagValues,[start, total])
 }
 
 function makeMatrix(data){
