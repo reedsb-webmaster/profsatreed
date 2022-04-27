@@ -184,6 +184,7 @@ function findProfessor(data, reference, refArray, professor){ //returns an objec
   }
 }
 
+/*
 function makeRow(row, first, last){
   let i = 0;
   let out = "<tr>";
@@ -195,6 +196,38 @@ function makeRow(row, first, last){
   }
   out += "</tr>";
   return out;
+}
+*/
+
+function findTags(row,headerRow){
+
+}
+
+function makeRow(row, headerRow){
+  let out = "<div class='reviewDiv'><div class='reviewHeader'><p class='rhe'>"
+  if (row[headerRow.indexOf("Warning")].toLowerCase() == "yes"){
+    out+= "Yes there are content warnings"
+  } else{
+    out+= "No content warnings for this review"
+  }
+  out += "</p><p class='rhe'> Class:  " + row[headerRow.indexOf("Class")] + "</p>"
+  out += "<p class='rhe'> Year class was taken:  " + row[headerRow.indexOf("Year")] + "</p>"
+  out += "<p class='rhe'> Major of Reviewer:  " + row[headerRow.indexOf("Major")] + "</p>"
+  out += "<p class='rhe'> Year class was taken:  " + row[headerRow.indexOf("Year")] + "</p>"
+  out += "<p class='rhe'> Difficulty:  " + row[headerRow.indexOf("Difficulty")] + "</p>"
+  out += "<p class='rhe'> Retake:  " + row[headerRow.indexOf("Retake")] + "</p>"
+  out += "<div><p>Tag Information:</p>"
+  let i = 0;
+  while (i<tagNames.length){
+    if (row[headerRow.indexOf(tagNames[i])] ){
+      out += "<p class='rhe'>"+tagNames[i]+":  "+row[headerRow.indexOf(tagNames[i])]+"</p>"
+    }
+    i++
+  }
+  out += "</div>"
+  out += "</div><hr><div class='reviewBody'><p>"
+  out+= row[headerRow.indexOf("Comments")] + "</p></div></div>"
+  return out
 }
 
 function makeHeadRow(headerArray){
