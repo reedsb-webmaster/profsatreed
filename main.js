@@ -345,12 +345,48 @@ async function main() {
         document.getElementById("bodyTwo").innerHTML = getMthColumnData(2,dataRow);
         document.getElementById("bodyThree").innerHTML = getMthColumnData(3,dataRow);
 
+        colors = await fetchIt(colorRange, professorSheetId);
+        colorRow = getNthRow(0,colors)
+        var r = document.querySelector(':root');
+        r.style.setProperty('--main-pg-bg', getMthColumnData(0,colorRow))
+        r.style.setProperty('--nav-bar-bg', getMthColumnData(1,colorRow))
+        r.style.setProperty('--nav-bar-txt', getMthColumnData(2,colorRow))
+        r.style.setProperty('--title', getMthColumnData(3,colorRow))
+        r.style.setProperty('--btn-hover', getMthColumnData(4,colorRow))
+        r.style.setProperty('--main-btn-color', getMthColumnData(5,colorRow))
+        r.style.setProperty('--summary-bg', getMthColumnData(6,colorRow))
+        r.style.setProperty('--review-bg', getMthColumnData(7,colorRow))
+
         break;
     case "advisor_feedback.html":
         display("<iframe src='" + advisor_form + "'>loading...<iframe>")
+        colors = await fetchIt(colorRange, professorSheetId);
+        colorRow = getNthRow(0,colors)
+        var r = document.querySelector(':root');
+        r.style.setProperty('--main-pg-bg', getMthColumnData(0,colorRow))
+        r.style.setProperty('--nav-bar-bg', getMthColumnData(1,colorRow))
+        r.style.setProperty('--nav-bar-txt', getMthColumnData(2,colorRow))
+        r.style.setProperty('--title', getMthColumnData(3,colorRow))
+        r.style.setProperty('--btn-hover', getMthColumnData(4,colorRow))
+        r.style.setProperty('--main-btn-color', getMthColumnData(5,colorRow))
+        r.style.setProperty('--summary-bg', getMthColumnData(6,colorRow))
+        r.style.setProperty('--review-bg', getMthColumnData(7,colorRow))
         break;
     case "professor_feedback.html":
         display("<iframe src='" + professor_form + "'>loading...<iframe>")
+        display("<a href='"+short_professor_form+"'>Click here if you don't see the form</a>"
+        +"<iframe src='" + professor_form + "'>Loading...<iframe>")
+        colors = await fetchIt(colorRange, professorSheetId);
+        colorRow = getNthRow(0,colors)
+        var r = document.querySelector(':root');
+        r.style.setProperty('--main-pg-bg', getMthColumnData(0,colorRow))
+        r.style.setProperty('--nav-bar-bg', getMthColumnData(1,colorRow))
+        r.style.setProperty('--nav-bar-txt', getMthColumnData(2,colorRow))
+        r.style.setProperty('--title', getMthColumnData(3,colorRow))
+        r.style.setProperty('--btn-hover', getMthColumnData(4,colorRow))
+        r.style.setProperty('--main-btn-color', getMthColumnData(5,colorRow))
+        r.style.setProperty('--summary-bg', getMthColumnData(6,colorRow))
+        r.style.setProperty('--review-bg', getMthColumnData(7,colorRow))
         break;
     case "results.html":
         profResponse = await fetchIt(professorDataRange, professorSheetId);
@@ -378,6 +414,18 @@ async function main() {
         dataArray = makeDataArray(profResponse, profRef, profRefArray)
         sortProfs()
         fillDropDownMenu();
+
+        colors = await fetchIt(colorRange, professorSheetId);
+        colorRow = getNthRow(0,colors)
+        var r = document.querySelector(':root');
+        r.style.setProperty('--main-pg-bg', getMthColumnData(0,colorRow))
+        r.style.setProperty('--nav-bar-bg', getMthColumnData(1,colorRow))
+        r.style.setProperty('--nav-bar-txt', getMthColumnData(2,colorRow))
+        r.style.setProperty('--title', getMthColumnData(3,colorRow))
+        r.style.setProperty('--btn-hover', getMthColumnData(4,colorRow))
+        r.style.setProperty('--main-btn-color', getMthColumnData(5,colorRow))
+        r.style.setProperty('--summary-bg', getMthColumnData(6,colorRow))
+        r.style.setProperty('--review-bg', getMthColumnData(7,colorRow))
 
         break;
     case "search.html":
