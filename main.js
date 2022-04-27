@@ -45,13 +45,24 @@ var profRefMatrix;
 var currentReviews;
 
 //for the "arrays" used for sorting/organizing professor feedback/ratings
+// [first, last, dept, takeAgain, difficulty, race, gender, sexuality, classRating, disability, mentalHealth, academic, start, total]
 firstNameIndex = 0;
 lastnameIndex = 1;
 departmentIndex = 2
 retakeRatingIndex = 3;
 difficultyIndex = 4;
-startIndex = 5;
-totalEntriesIndex = 6;
+tagStartIndex = 5;
+raceKey = 5;
+genderKey = 6
+sexualityKey = 7;
+classKey = 8;
+disabilityKey = 9;
+mentalHealthKey = 10;
+academicKey = 11;
+startIndex = 12;
+totalEntriesIndex = 13;
+
+tagNames = ["Race","Gender","Sexuality","Class-tag","Disability","Mental Health","Academic"]
 
 
 function display(html) {
