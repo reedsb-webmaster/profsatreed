@@ -14,7 +14,7 @@ const professorSheetId = "1N4_AMOYhNMGUgvm4CQSHIp68VWh1L418gH5N0SslQaY";
 const professorDataRange = "Data!B1:Q";
 const professorRefRange = "Ref!B2:K";
 const indexRange = "Index!B2:E2";
-const colorRange = "Colors!B2:I2"
+const colorRange = "Colors!B2:J2"
 
 const advisorSheetId = "1I4xk2bHo6kYdddThQ3wi70egkMzTND40llPcVrEE3Kc";
 const advisorDataRange = "Data!A1:D50";
@@ -331,7 +331,7 @@ function displaySummaries(array){
 // we source Google's sheets SDK in order to set up the client session then
 // fill in site content.
 async function main() {
-    switch (window.location.href.split("/")[4]) {
+    switch (window.location.href.split("/")[3]) {
     case "":
     case "index.html":
         // This here code is an ugly attempt at extracting the json from
@@ -356,6 +356,7 @@ async function main() {
         r.style.setProperty('--main-btn-color', getMthColumnData(5,colorRow))
         r.style.setProperty('--summary-bg', getMthColumnData(6,colorRow))
         r.style.setProperty('--review-bg', getMthColumnData(7,colorRow))
+        r.style.setProperty('--page-bg',getMthColumnData(8,colorRow))
 
         break;
     case "advisor_feedback.html":
@@ -371,6 +372,7 @@ async function main() {
         r.style.setProperty('--main-btn-color', getMthColumnData(5,colorRow))
         r.style.setProperty('--summary-bg', getMthColumnData(6,colorRow))
         r.style.setProperty('--review-bg', getMthColumnData(7,colorRow))
+        r.style.setProperty('--page-bg',getMthColumnData(8,colorRow))
         break;
     case "professor_feedback.html":
         display("<a href='"+short_professor_form+"'>Click here if you don't see the form</a>"
@@ -386,6 +388,7 @@ async function main() {
         r.style.setProperty('--main-btn-color', getMthColumnData(5,colorRow))
         r.style.setProperty('--summary-bg', getMthColumnData(6,colorRow))
         r.style.setProperty('--review-bg', getMthColumnData(7,colorRow))
+        r.style.setProperty('--page-bg',getMthColumnData(8,colorRow))
         break;
     case "results.html":
         profResponse = await fetchIt(professorDataRange, professorSheetId);
@@ -425,6 +428,7 @@ async function main() {
         r.style.setProperty('--main-btn-color', getMthColumnData(5,colorRow))
         r.style.setProperty('--summary-bg', getMthColumnData(6,colorRow))
         r.style.setProperty('--review-bg', getMthColumnData(7,colorRow))
+        r.style.setProperty('--page-bg',getMthColumnData(8,colorRow))
 
         break;
     case "search.html":

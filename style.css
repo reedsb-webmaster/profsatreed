@@ -10,6 +10,7 @@
   --main-btn-color:white;
   --summary-bg:#fff2f2;
   --review-bg:#fff2f2;
+  --page-bg:#ededed;
 }
 
 body {
@@ -19,6 +20,7 @@ body {
     width:75%;
     color: #454545;
     font-family: arial;
+    background-color=var(--page-bg);
 }
 
 .body-div {
