@@ -73,8 +73,9 @@ header nav {
     padding: 6px;
     height:3em;
     display:flex;
-    align-items:center;
+    justify-content:center;
     border-radius:15px;
+    width:100%;
 }
 
 header nav a {
@@ -84,6 +85,11 @@ header nav a {
     transition:transform .2s;
     font-family: lora, serif;
     margin-right:15px;
+}
+
+.nav-div{
+  display:flex;
+  align-items: center;
 }
 
 header nav a:hover {
