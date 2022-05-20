@@ -2,23 +2,23 @@
 // All JavaScript goes in here
 //
 
-const professor_form = "https://docs.google.com/forms/d/e/1FAIpQLSfgfaogSRb2fpxN6UwELg5xWRwCYDup1rv6BHF_Rla3Hizd8w/viewform?embedded=true"
+const ref_range_final = C2:GH2;
+// - this is for a google sheet that has every professor's name in it
 
-const short_professor_form = "https://forms.gle/FyREV8CzBQMwnhNH6"
 
-const advisor_form = "https://docs.google.com/forms/d/e/" +
-      "1FAIpQLSc60U5LNQFxcrewHO1P6Gk4rpYtlkbYxBl0Q_yseNiBgqQ9zg" +
-      "/embedded=true"
+const professor_form = "https://docs.google.com/forms/d/1EXp_sMl1pPEPkbZbtQ8V4fZY9_PjpsiirNRNNgC4Df8/edit#responses"
 
-const professorSheetId = "1N4_AMOYhNMGUgvm4CQSHIp68VWh1L418gH5N0SslQaY";
-const professorDataRange = "Data!B1:Q";
-const professorRefRange = "Ref!B2:K";
+const advisor_form = "https://docs.google.com/forms/d/1str83mfBwtH_D0DJB5muv6zJiS54G_rl5mc5Oeo92YQ/edit#responses"
+
+const professorSheetId = "1e6aobkcO4HOi_53IPOFKAFPnFRUqHmETJjFT9tk5sls";
+const professorDataRange = "Data!B1:O";
+const professorRefRange = "Ref!C2:GH";
 const indexRange = "Index!B2:E2";
 const colorRange = "Colors!B2:J2"
 
-const advisorSheetId = "1I4xk2bHo6kYdddThQ3wi70egkMzTND40llPcVrEE3Kc";
-const advisorDataRange = "Data!A1:D50";
-const advisorRefRange = "Ref!B3:N50";
+const advisorSheetId = "1OMMpXGzptRyuRBoae_A90htm0Afd8tPHrHYfmOq2VnU";
+const advisorDataRange = "Data!B1:M";
+const advisorRefRange = "Ref!C2:GH";
 
 const api_key = "AIzaSyBI6UWWW3cn5La1bbLO5geSvYVNWEqwYEE"
 
@@ -331,7 +331,7 @@ function displaySummaries(array){
 // we source Google's sheets SDK in order to set up the client session then
 // fill in site content.
 async function main() {
-    switch (window.location.href.split("/")[4]) {
+    switch (window.location.href.split("/")[3]) {
     case "":
     case "index.html":
         // This here code is an ugly attempt at extracting the json from
